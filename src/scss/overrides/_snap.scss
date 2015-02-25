@@ -1,0 +1,48 @@
+snap-drawer{
+  @include mq(960px){
+    visibility: hidden;
+    display: none;
+  }
+  background-color: #EEE;
+  color: #666;
+  border-right: inset 1px #CCC;
+  nav{
+    margin-top: 5rem;
+    margin-left: 0;
+  }
+  ul{
+    list-style: none;
+    padding-left: 0;
+    &:last-child {
+      border-bottom: dotted 1px #CCC;
+    }
+  }
+  li {
+    list-style-type: none;
+  }
+  a{
+    color:#666;
+    font-size: 2rem;
+    border-top: dotted 1px #CCC;
+    display: block;
+    padding: 1rem;
+    &:hover{
+      color:#000;
+      background-color: #CCC;
+      text-decoration: none;
+    }
+  }
+}
+
+snap-content {
+  @include mq(960px){
+    width: 960px;
+    height: auto;
+    margin: auto;
+    overflow: visible;
+  }
+  background-color: #FFF;
+  //border-left: 1px solid #000;
+  //border-right: 1px solid #000;
+  
+}

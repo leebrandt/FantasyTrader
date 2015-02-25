@@ -1,0 +1,28 @@
+<section data-ng-controller="AuthenticationCtrl as vm">
+	<img class="app-icon" data-ng-src="/img/app-icon.png"/>
+	<section class="app-title">
+		Assurant Fantasy Trader
+	</section>
+	<section class="login">
+		<h1>Sign In</h1>
+		<form class="login-form">
+			<div class="form-group" data-ng-if="vm.step===1">
+				<input type="email" name="username" class="form-input" placeholder="Email Address" data-ng-model="vm.credentials.username" required/>
+			</div>
+			<div class="form-group" data-ng-if="vm.step===2">
+				<input type="password" name="password" class="form-input" placeholder="Password" data-ng-model="vm.credentials.password" required/>
+			</div>
+			<div class="form-actions">
+				<a data-ng-href="#" data-ng-click="vm.continue()" data-ng-if="vm.step===1">Continue</a>
+				<a data-ng-href="#" data-ng-click="vm.signIn()" data-ng-if="vm.step===2">Sign In</a>
+			</div>
+		</form>
+
+		<section class="other-actions">
+			<a class="action" data-ng-href="#/forgot">Forgot Password</a>
+			<h6>Don't have a Fantasy Trader account?</h6>
+			<a class="action" data-ng-href="#/register">Sign Up Now</a>
+		</section>
+
+	</section>
+</section>

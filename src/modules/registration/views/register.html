@@ -1,0 +1,24 @@
+<section class="register" data-ng-controller="RegistrationCtrl as vm">
+	<h1>Fantasy Trader Registration</h1>
+	<form class="registration-form">
+		<div class="form-group">
+			<input type="email" name="firstName" class="form-input" placeholder="First Name" data-ng-model="vm.firstName" required/>
+		</div>
+
+		<div class="form-group">
+			<input type="email" name="lastName" class="form-input" placeholder="Last Name" data-ng-model="vm.lastName" required/>
+		</div>
+
+		<div class="form-group">
+			<input type="email" name="username" class="form-input" placeholder="Email Address" data-ng-model="vm.username" required/>
+		</div>
+
+		<div class="captcha" vc-recaptcha theme="white" lang="en" data-ng-model="vm.captcha"
+		key="'6LcJO8ESAAAAAFca2-gBw4azCGEG4HFxNFzNPp1K'">
+    </div>
+
+		<div class="form-actions">
+			<a data-ng-href="#">Register</a>
+		</div>
+	</form>
+</section>

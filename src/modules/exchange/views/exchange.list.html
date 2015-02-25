@@ -1,0 +1,21 @@
+<section class="exchange-list" data-ng-init="vm.loadExchangeList()">
+	<h3>My Portfolios</h3>
+	<section class="exchange" data-ng-repeat="exchange in vm.exchangeList">
+		<a data-ng-href="#/exchange/detail/{{exchange.id}}">
+			<img data-ng-src="exchange.logo"/>
+			<section class="info">
+				<h4 data-ng-bind="exchange.name"></h4>
+				<h2 data-ng-bind="exchange.value | number"></h2>
+				<h5 class="stock" data-ng-class="{down:exchange.change < 0, up:exchange.change > 0}">
+					<span data-ng-bind="exchange.change"></span>
+					(<span data-ng-bind="exchange.changePct | percentage"></span>)
+				</h5>
+			</section>
+			<section class="competition">
+				<div class="weeks">Week {{exchange.currentWeek}} of {{exchange.totalWeeks}}</div>
+				<div class="place">{{exchange.currentPlace}} place</div>
+				<div class="ends">Ends {{exchange.endDate | date: 'M/d'}}</div>
+			</section>
+		</a>
+	</section>
+</section>

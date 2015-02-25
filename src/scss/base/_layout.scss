@@ -1,0 +1,94 @@
+* { font-family: 'Arial', 'Helvetica', 'sans-serif' }
+
+h1{
+	color: #aaa;
+	font-size: 3.5rem;
+}
+h3{
+	color: #aaa;
+	border-bottom: solid 1px #aaa;
+	font-size: 1.5rem;
+	margin-top: 0;
+}
+
+a{
+	color: $blue;
+	&:hover,&:active{
+		color: $faded-blue;
+		text-decoration: none;
+	}
+	&.action{
+		color: #AAA;
+		text-transform: uppercase;
+		&:hover,&:active{
+			color: $faded-blue;
+		}
+	}
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=phone],
+input[type=url]{
+	position: relative;
+	border:none;
+	border-bottom: solid 1px #000;
+	background-color: transparent;
+	width: 100%;
+	margin: 1rem 0;
+	&.ng-dirty{
+		&.ng-invalid{
+			background: #fff url(/img/invalid.png) no-repeat 98% center;
+		}
+		&.ng-valid{
+			background: #fff url(/img/valid.png) no-repeat 98% center;
+		}
+	}
+
+}
+
+form{
+	.fa-question-circle{
+		vertical-align: text-bottom;
+		font-size: 2rem;
+	}
+}
+
+.content{
+	padding: 1rem;
+}
+
+header.topbar {
+	background-color: #EFEFEF;
+	color: #333;
+	font-size: 1.75rem;
+	padding: 1rem;
+	border-bottom: solid 1px #DDD;
+	@include clearfix();
+	span.fa {
+		font-size: 2rem;
+	}
+}
+
+.badge{
+	font-weight: normal;
+	background-color: $orange;
+	color: #FFF;
+	font-size: 1.5rem;
+}
+
+.stock{
+	&.symbol{
+		text-transform: uppercase;
+	}
+	&.price{
+		color: #000;
+	}
+	&.down{
+		color: #F00;
+	}
+	&.up{
+		color: #0B0;
+	}
+}

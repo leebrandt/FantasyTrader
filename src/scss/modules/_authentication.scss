@@ -1,0 +1,28 @@
+.app-title{
+	font-size: 3.5rem;
+	font-weight: bold;
+	color: $blue;
+	width: 60%;
+	float: right;
+}
+.app-icon{
+	max-width: 30%;
+	margin: 2rem;
+}
+
+.login{
+	clear: both;
+	width: 75%;
+	margin: auto;
+	.form-actions{
+		text-align: center;
+		a{
+			text-transform: uppercase;
+		}
+	}
+
+	.other-actions{
+		text-align: center;
+		margin-top: 15rem;
+	}
+}
