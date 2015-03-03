@@ -15,6 +15,8 @@
     "font-awesome": "~4.3.0",
     "angular-snap": "~1.8.0",
     "snapjs": "~1.9.3",
-    "lodash": "~3.3.1"
+    "lodash": "~3.3.1",
+    "moment": "~2.9.0",
+    "twix": "~0.6.2"
   }
 }

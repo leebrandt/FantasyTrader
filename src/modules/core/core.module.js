@@ -9,11 +9,6 @@
 				url: '/',
 				templateUrl: 'modules/core/views/home.html'
 			})
-			.state('news', {
-				title: 'News',
-				url: '/news',
-				templateUrl: 'modules/core/views/news.html'
-			})
 			.state('rules',{
 				title: 'Rules',
 				url:'/rules',

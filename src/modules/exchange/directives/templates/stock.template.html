@@ -1,0 +1,6 @@
+<section class="stock">
+	<span class="symbol" data-ng-bind="stock.Symbol"></span>
+	<span class="price" data-ng-bind="stock.LastPrice"></span>
+	<span data-ng-class="{down:stock.Change < 0, up:stock.Change > 0}" data-ng-bind="stock.Change | number: 3"></span>
+	<span data-ng-class="{down:stock.ChangePercent < 0, up:stock.ChangePercent > 0}">({{stock.ChangePercent | percentage:3}})</span>
+<section>

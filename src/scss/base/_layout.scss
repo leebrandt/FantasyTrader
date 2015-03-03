@@ -10,6 +10,11 @@ h3{
 	font-size: 1.5rem;
 	margin-top: 0;
 }
+h4{
+	color: $blue;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+}
 
 a{
 	color: $blue;
@@ -45,7 +50,6 @@ input[type=url]{
 			background: #fff url(/img/valid.png) no-repeat 98% center;
 		}
 	}
-
 }
 
 form{
@@ -79,16 +83,19 @@ header.topbar {
 }
 
 .stock{
-	&.symbol{
+	.symbol{
 		text-transform: uppercase;
 	}
-	&.price{
+	.price{
 		color: #000;
 	}
-	&.down{
+	.down{
 		color: #F00;
 	}
-	&.up{
+	.up{
 		color: #0B0;
+		&:before{
+			content:"+";
+		}
 	}
 }

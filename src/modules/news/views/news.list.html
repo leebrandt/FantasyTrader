@@ -1,0 +1,11 @@
+<section class="news" data-ng-controller="NewsCtrl as vm" data-ng-init="vm.loadNews()">
+	<h3>Recent Headlines</h3>
+	<article class="item" data-ng-repeat="item in vm.news.entries">
+		<a class="title" data-ng-href="{{item.link}}" target="_blank" data-ng-bind="item.title"></a>
+		<section class="byline">
+			<span class="author" data-ng-bind="item.author"></span>
+			<span class="published" data-ng-bind="item.publishedDate | ago"></span>
+		</section>
+		<section class="summary" data-ng-bind="item.contentSnippet"></section>
+	</article>
+</section>

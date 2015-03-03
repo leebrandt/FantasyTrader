@@ -1,3 +1,49 @@
 <section class="exchange detail" data-ng-init="vm.loadExchange()">
-	<h3 data-ng-bind="vm.exchange.name"></h3>
+	<img data-ng-src="vm.exchange.logo"/>
+	<section class="info">
+		<h2 data-ng-bind="vm.exchange.name"></h2>
+		<h5 data-ng-bind="vm.exchange.owner"></h5>
+		<a href="#" class="action">settings</a>
+	</section>
+	<section class="competition">
+		<div class="weeks">Week {{vm.exchange.currentWeek}} of {{vm.exchange.durationWeeks}}</div>
+		<div class="ends">Ends {{vm.exchange.endDate | date: 'M/d'}}</div>
+		<a href="#" class="action">history</a>
+	</section>
+</section>
+
+<section class="portfolio">
+	<h3>Portfolio Assets</h3>
+	<div class="header">Portfolio Value</div>
+	<div class="value" data-ng-bind="vm.exchange.portfolio.value | currency"></div>
+
+	<section class="trades">
+		<span class="trade" data-ng-bind="vm.exchange.portfolio.trades.length"></span> trades available
+	</section>
+
+	<section class="cash">
+		<label>cash:</label>
+		<span data-ng-bind="'Total: ' + (vm.exchange.portfolio.cash | currency)"></span>
+	</section>
+
+	<section class="stocks">
+		<section class="stock" data-ng-repeat="stock in vm.exchange.portfolio.stocks">
+			<section class="details">
+				<section class="company" data-ng-bind="stock.company + ' ('+stock.symbol+')'"></section>
+				<section>
+				<span class="shares" data-ng-bind="'Shares: ' + stock.shares"></span>
+				<span data-ng-class="{down:stock.change < 0, up:stock.change > 0}" data-ng-bind="'('+stock.change+')'"></span>
+				</section>
+				<section>
+					<span class="price" data-ng-bind="'Price: ' + (stock.price | currency)"></span>
+					<span class="total" data-ng-bind="'Total: ' + (stock.price * stock.shares | currency)"></span>
+				</section>
+			</section>
+
+			<section class="actions">
+				<span class="action">buy</span>
+				<span class="action">sell</span>
+			</section>
+		</section>
+	</section>
 </section>

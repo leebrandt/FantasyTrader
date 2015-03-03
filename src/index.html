@@ -45,6 +45,7 @@
         <ul>
           <li><a data-ng-href="#/">Home</a></li>
           <li><a data-ng-href="#/news">News</a></li>
+          <li><a data-ng-href="#/exchange/list">Exchanges</a></li>
           <li><a data-ng-href="#/rules">Rules</a></li>
         </ul>
       </nav>
@@ -82,18 +83,27 @@
   <script src="/lib/snapjs/snap.min.js"></script>
   <script src="/lib/angular-snap/angular-snap.min.js"></script>
 
+  <script src="/lib/moment/moment.js"></script>
+  <script src="/lib/twix/bin/twix.min.js"></script>
+
 
   <!-- inject:js -->
   <script src="/app.js"></script>
+  <script src="/fakeData.js"></script>
   <script src="/modules/authentication/authentication.module.js"></script>
   <script src="/modules/core/core.module.js"></script>
   <script src="/modules/exchange/exchange.module.js"></script>
+  <script src="/modules/news/news.module.js"></script>
   <script src="/modules/registration/registration.module.js"></script>
   <script src="/modules/authentication/controllers/authentication.controller.js"></script>
-  <script src="/modules/core/controllers/about.controller.js"></script>
+  <script src="/modules/core/controllers/home.controller.js"></script>
+  <script src="/modules/core/filters/moment.filter.js"></script>
   <script src="/modules/core/filters/percent.filter.js"></script>
   <script src="/modules/exchange/controllers/exchange.controller.js"></script>
+  <script src="/modules/exchange/directives/exchange.directive.js"></script>
+  <script src="/modules/exchange/directives/stock.directive.js"></script>
   <script src="/modules/exchange/services/exchange.service.js"></script>
+  <script src="/modules/news/controllers/news.controller.js"></script>
   <script src="/modules/registration/controllers/registration.controller.js"></script>
   <!-- endinject -->
 

@@ -1,0 +1,18 @@
+<section class="exchange">
+		<a data-ng-href="#/exchange/detail/{{exchange.id}}">
+			<img data-ng-src="exchange.logo"/>
+			<section class="info">
+				<h4 data-ng-bind="exchange.name"></h4>
+				<h2 data-ng-bind="exchange.portfolio.value | number"></h2>
+				<h5 class="stock" data-ng-class="{down:exchange.portfolio.change < 0, up:exchange.portfolio.change > 0}">
+					<span data-ng-bind="exchange.portfolio.change"></span>
+					(<span data-ng-bind="exchange.portfolio.changePct | percentage"></span>)
+				</h5>
+			</section>
+			<section class="competition">
+				<div class="weeks">Week {{ exchange.currentWeek }} of {{exchange.durationWeeks}}</div>
+				<div class="place">{{exchange.portfolio.currentPlace}} place</div>
+				<div class="ends">Ends {{exchange.endDate}}</div>
+			</section>
+		</a>
+	</section>

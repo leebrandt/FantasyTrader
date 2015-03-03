@@ -11523,6 +11523,11 @@ h3 {
   font-size: 1.5rem;
   margin-top: 0; }
 
+h4 {
+  color: #06C;
+  font-size: 1.5rem;
+  text-transform: uppercase; }
+
 a {
   color: #06C; }
   a:hover, a:active {
@@ -11573,14 +11578,16 @@ header.topbar {
   color: #FFF;
   font-size: 1.5rem; }
 
-.stock.symbol {
+.stock .symbol {
   text-transform: uppercase; }
-.stock.price {
+.stock .price {
   color: #000; }
-.stock.down {
+.stock .down {
   color: #F00; }
-.stock.up {
+.stock .up {
   color: #0B0; }
+  .stock .up:before {
+    content: "+"; }
 
 /* Overrides */
 snap-drawer {
@@ -11629,7 +11636,7 @@ snap-content {
   font-size: 3.5rem;
   font-weight: bold;
   color: #06C;
-  width: 60%;
+  width: 59%;
   float: right; }
 
 .app-icon {
@@ -11648,37 +11655,89 @@ snap-content {
     text-align: center;
     margin-top: 15rem; }
 
-.exchange-list .exchange {
-  border-bottom: solid 1px #EEE;
+.exchange {
   clear: both;
   padding: 1rem; }
-  .exchange-list .exchange:before, .exchange-list .exchange:after {
+  .exchange:before, .exchange:after {
     content: " ";
     display: table; }
-  .exchange-list .exchange:after {
+  .exchange:after {
     clear: both; }
-  .exchange-list .exchange:last-child {
-    border-bottom: none; }
-  .exchange-list .exchange img {
+  .exchange img {
     height: 75px;
     width: 75px;
     float: left;
     margin-right: 1rem; }
-  .exchange-list .exchange .info {
+  .exchange .info {
     width: 50%;
     float: left; }
-    .exchange-list .exchange .info h1, .exchange-list .exchange .info h2, .exchange-list .exchange .info h3, .exchange-list .exchange .info h4, .exchange-list .exchange .info h5, .exchange-list .exchange .info h6 {
+    .exchange .info h1, .exchange .info h2, .exchange .info h3, .exchange .info h4, .exchange .info h5, .exchange .info h6 {
       margin: 0;
       padding: 0; }
-    .exchange-list .exchange .info h2 {
+    .exchange .info h2 {
       font-size: 2.5rem; }
-    .exchange-list .exchange .info h2, .exchange-list .exchange .info h4 {
+    .exchange .info h2, .exchange .info h4 {
       color: black; }
-  .exchange-list .exchange .competition {
+  .exchange .competition {
     width: 25%;
     float: right;
     text-align: right; }
-    .exchange-list .exchange .competition .weeks, .exchange-list .exchange .competition .ends {
+    .exchange .competition .weeks, .exchange .competition .ends {
       color: #999; }
-    .exchange-list .exchange .competition .place {
+    .exchange .competition .place {
       font-size: 1.75rem; }
+  .exchange.non-member .info {
+    width: 100%; }
+    .exchange.non-member .info a {
+      font-size: 1.5rem; }
+
+/* Portfolio Styles */
+.portfolio .header {
+  color: #06C;
+  text-transform: uppercase; }
+.portfolio .value {
+  font-size: 2rem; }
+.portfolio .trades {
+  border-bottom: solid 1px #EEE;
+  padding: 1rem;
+  text-align: center;
+  color: #AAA; }
+.portfolio .cash {
+  border-bottom: solid 1px #EEE;
+  padding: .5rem; }
+  .portfolio .cash label {
+    text-transform: uppercase;
+    color: #06C;
+    display: block;
+    padding: 0;
+    font-weight: normal; }
+.portfolio .stocks .stock {
+  border-bottom: solid 1px #EEE;
+  padding: .5rem; }
+  .portfolio .stocks .stock:before, .portfolio .stocks .stock:after {
+    content: " ";
+    display: table; }
+  .portfolio .stocks .stock:after {
+    clear: both; }
+  .portfolio .stocks .stock .details {
+    width: 70%;
+    float: left; }
+    .portfolio .stocks .stock .details .symbol, .portfolio .stocks .stock .details .company {
+      color: #06C; }
+  .portfolio .stocks .stock .actions {
+    text-align: right;
+    width: 25%;
+    float: right; }
+    .portfolio .stocks .stock .actions .action {
+      display: block;
+      text-transform: uppercase;
+      color: #AAA;
+      padding: .5rem 0; }
+
+.news .item {
+  margin: 1.5rem 0; }
+  .news .item .title {
+    font-size: 1.75rem; }
+  .news .item .byline {
+    font-size: 1.25rem;
+    font-weight: bold; }

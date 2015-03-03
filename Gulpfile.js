@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 		reload = browserSync.reload;
 
 var paths = {
-	scripts: ['src/app.js', 'src/app-controller.js', 'src/modules/**/*.js'],
+	scripts: ['src/app.js', 'src/fakeData.js', 'src/app-controller.js', 'src/modules/**/*.js'],
 	html: ['src/**/*.html']
 }
 
