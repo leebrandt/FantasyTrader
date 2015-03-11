@@ -2,7 +2,6 @@
 	'use strict';
 
 	var exchange = function(){
-
 		return {
 			restrict: 'E',
 			scope:{

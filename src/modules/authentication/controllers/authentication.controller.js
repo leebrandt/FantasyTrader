@@ -7,7 +7,10 @@
 		ctrl.credentials = {};
 
 		ctrl.continue = function(){
-			ctrl.step++;
+			if(ctrl.credentials.username)
+			{
+				ctrl.step++;
+			}
 		};
 
 		ctrl.signIn = function(){

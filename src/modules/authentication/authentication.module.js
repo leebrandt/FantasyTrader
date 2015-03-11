@@ -10,7 +10,7 @@
 			});
 	};
 
-	angular.module('authentication', [])
+	angular.module('authentication', ['ui.router', 'exchange'])
 		.config(['$stateProvider', config]);
 
 }());
