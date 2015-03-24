@@ -4,10 +4,13 @@ describe('Authentication Controller', function(){
 	beforeEach(module('authentication'));
 
 	var controller;
-	beforeEach(inject(function($controller, $state){
+	beforeEach(inject(function($controller, $state, Logger){
 		controller = $controller('AuthenticationCtrl');
 		spyOn($state, 'go').and.callFake(function(state, params){
 			// do nothing on purpose.
+		});
+		spyOn(Logger, 'LogError').and.callFake(function(message){
+			// do nothing on prupose
 		});
 	}));
 
@@ -34,6 +37,11 @@ describe('Authentication Controller', function(){
 		controller.continue();
 		expect(controller.step).toEqual(1);
 	});
+
+	it('should tell the user why it is not continuing', inject(function(Logger){
+		controller.continue();
+		expect(Logger.LogError).toHaveBeenCalled();
+	}));
 
 	it('should take the password second and sign in', inject(function($state){
 		controller.credentials.username = 'e@mail.com';

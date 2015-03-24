@@ -23,6 +23,7 @@ module.exports = function(config) {
       'src/lib/snapjs/snap.min.js',
       'src/lib/angular-snap/angular-snap.min.js',
       'src/lib/moment/moment.js',
+      'src/lib/toastr/toastr.js',
       'src/lib/twix/bin/twix.min.js',
       'src/app.js',
       'src/fakeData.js',

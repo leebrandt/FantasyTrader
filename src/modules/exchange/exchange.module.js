@@ -23,6 +23,6 @@
 			});
 	};
 
-	angular.module('exchange', [])
+	angular.module('exchange', ['ui.router'])
 		.config(['$stateProvider', config]);
 }());

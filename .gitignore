@@ -1,9 +1,14 @@
-/dist/
-.DS_Store
+# production build of site
+dist/
+temp/
 
-.idea
+# Dependency directories
+# Commenting this out is preferred by some people, see
+# https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
+node_modules/
+app/bower_components/
 
-/node_modules/
-/lib/
-npm-debug.log
-/tmp/
+# Users Environment Variables
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.DS_Store

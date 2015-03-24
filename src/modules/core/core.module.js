@@ -18,7 +18,17 @@
 			$urlRouterProvider.otherwise('/login');
 	};
 
+	var run = function($rootScope){
+		toastr.options = {
+			closeButton: true,
+			positionClass: 'toast-top-right',
+			timeout: 3000
+		}
+	};
+
 	angular.module('core', ['ui.router', 'ui.bootstrap'])
-		.config(['$stateProvider', '$urlRouterProvider', config]);
+	.constant('toastr', window.toastr)
+		.config(['$stateProvider', '$urlRouterProvider', config])
+		.run(['$rootScope', run]);
 
 }())

@@ -13,8 +13,8 @@
 				<input type="password" name="password" class="form-input" placeholder="Password" data-ng-model="vm.credentials.password" required/>
 			</div>
 			<div class="form-actions">
-				<a data-ng-href="#" data-ng-click="vm.continue()" data-ng-if="vm.step===1">Continue</a>
-				<a data-ng-href="#" data-ng-click="vm.signIn()" data-ng-if="vm.step===2">Sign In</a>
+				<a class="step" data-ng-href="#" data-ng-click="vm.continue()" data-ng-if="vm.step===1">Continue</a>
+				<a class="step" data-ng-href="#" data-ng-click="vm.signIn()" data-ng-if="vm.step===2">Sign In</a>
 			</div>
 		</form>
 

@@ -12,7 +12,6 @@ describe('moment filter', function(){
 		var today = new Date();
 		var twoDaysFromNow = new Date(today);
 		twoDaysFromNow.setDate(today.getDate()+2);
-		console.log(twoDaysFromNow);
 
 		var output = ago(twoDaysFromNow);
 		expect(output).toEqual(jasmine.any(String));
@@ -23,7 +22,6 @@ describe('moment filter', function(){
 		var today = new Date();
 		var twoDaysFromNow = new Date(today);
 		twoDaysFromNow.setDate(today.getDate()-2);
-		console.log(twoDaysFromNow);
 
 		var output = ago(twoDaysFromNow);
 		expect(output).toEqual(jasmine.any(String));
