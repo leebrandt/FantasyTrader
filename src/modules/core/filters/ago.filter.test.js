@@ -27,4 +27,10 @@ describe('moment filter', function(){
 		expect(output).toEqual(jasmine.any(String));
 		expect(output).toEqual('2 days ago');
 	}));
+
+	it('should return the value passed in for invalid dates', function(){
+		var badDate = "sumpin";
+		var output = ago(badDate);
+		expect(output).toEqual('sumpin');
+	});
 });

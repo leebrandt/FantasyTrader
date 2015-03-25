@@ -29,18 +29,35 @@ module.exports = function(config) {
       'src/fakeData.js',
       'src/modules/**/*.module.js',
       'src/modules/**/*.js',
-      'tests/unit/**/*.js'
+      'src/modules/**/*.html',
+      'src/modules/**/*.test.js'      
     ],
 
+    exclude:[
+      'src/modules/**/*.spec.js'
+    ],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'src/modules/**/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'src',
+      moduleName: 'templates',
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['mocha'],
+
+    plugins:[
+      'karma-jasmine',
+      'karma-mocha-reporter',
+      'karma-ng-html2js-preprocessor',
+      'karma-phantomjs-launcher'
+    ],
 
     // web server port
     port: 9876,

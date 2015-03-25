@@ -3,7 +3,10 @@
 
 	var filter = function ($filter) {
 	  return function (input, decimals) {
-	    return $filter('number')(input, decimals)+'%';
+	  	if(isNaN(input)){
+	  		return '0%';	  		
+	  	}
+    	return $filter('number')(input, decimals)+'%';
 	  };
 	};
 

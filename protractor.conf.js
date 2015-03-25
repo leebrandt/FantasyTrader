@@ -1,7 +1,9 @@
 // conf.js
 exports.config = {
-  seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['*.js'],
+  // The file path to the selenium server jar () 
+  seleniumServerJar: 'node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar',
+  // seleniumAddress: 'http://localhost:4444/wd/hub', 
+  specs: ['src/modules/**/*.spec.js'],
   capabilities: {
     browserName: 'phantomjs',
 

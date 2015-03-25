@@ -27,7 +27,7 @@
 			LogInfo: logInfo,
 			LogWarning: logWarning,
 			LogDebug: logDebug
-		}
+		};
 	};
 
 	angular.module('core')

@@ -23,4 +23,9 @@ describe('Percent Filter', function(){
 		var value = percent(10.1289, 2);
 		expect(value).toEqual('10.13%');
 	});
+
+	it('should return \'0%\' for invalid input values', function(){
+		var value = percent('badValue');
+		expect(value).toEqual('0%');
+	});
 });

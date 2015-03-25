@@ -1,7 +1,7 @@
 describe('Authentication Controller', function(){
 	'use strict';
 
-	beforeEach(module('authentication'));
+	beforeEach(angular.mock.module('authentication'));
 
 	var controller;
 	beforeEach(inject(function($controller, $state, Logger){

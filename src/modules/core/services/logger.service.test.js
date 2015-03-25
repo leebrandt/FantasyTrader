@@ -45,11 +45,11 @@ describe('Logger service', function(){
 
 		it('should log warnings to the console', function(){
 			expect(console.warn).toHaveBeenCalledWith('message');
-		})
+		});
 
 		it('should show a toast with the warning message', function(){
 			expect(toastr.warning).toHaveBeenCalledWith('message', 'Warning');
-		})
+		});
 	});
 
 	describe('Information logging', function(){
@@ -64,7 +64,7 @@ describe('Logger service', function(){
 
 		it('should show a toast with information messages', function(){
 			expect(toastr.info).toHaveBeenCalledWith('Info message', 'Information');
-		})
+		});
 	});
 
 
@@ -73,7 +73,7 @@ describe('Logger service', function(){
 			spyOn(console, 'debug');
 			service.LogDebug('debug message');
 			expect(console.debug).toHaveBeenCalledWith('debug message');
-		})
+		});
 	});
 
 

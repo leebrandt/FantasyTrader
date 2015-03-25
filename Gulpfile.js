@@ -1,12 +1,16 @@
 var gulp = require('gulp'),
 		sass = require('gulp-sass'),
 		inject = require('gulp-inject'),
+		karma = require('gulp-karma'),
+		protractor = require('gulp-protractor').protractor,
+		webdriver_update = require('gulp-protractor').webdriver_update,
 		browserSync = require('browser-sync'),
 		reload = browserSync.reload;
 
 var paths = {
 	scripts: ['src/app.js', 'src/fakeData.js', 'src/app-controller.js', 'src/modules/**/*.js'],
-	html: ['src/**/*.html']
+	html: ['src/**/*.html'],
+	unitTests: ['src/modules/**/*.test.js']
 }
 
 gulp.task('sass', function(){
@@ -30,8 +34,40 @@ gulp.task('browser-sync', function(){
 	});
 });
 
+
+gulp.task('test:unit', function(){
+	return gulp.src('./foobar')
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'run'
+    }))
+    .on('error', function(err) {
+      // Make sure failed tests cause gulp to exit non-zero
+      console.log(err);
+      this.emit('end'); //instead of erroring the stream, end it
+    });
+});
+
+gulp.task('webdriver_update', webdriver_update);
+gulp.task('test:e2e', ['webdriver_update'], function(){
+	gulp.src('./foobar')
+  .pipe(protractor({
+      configFile: 'protractor.conf.js',
+      args: ['--verbose']
+  })) 
+  .on('error', function(e) { throw e });
+});
+
+
+gulp.task('tdd', function(){
+	karma.start({
+    configFile: __dirname + '/karma.conf.js'
+  });	
+});
+
 gulp.task('dev', ['sass', 'inject', 'browser-sync'], function(){
 	gulp.watch('src/scss/**/*.scss', ['sass']);
 	gulp.watch(paths.html, [reload]);
-	gulp.watch(paths.scripts, ['inject', reload])
+	gulp.watch(paths.scripts, ['inject', reload]);
+	gulp.watch(paths.unitTests, ['test:unit']);
 });

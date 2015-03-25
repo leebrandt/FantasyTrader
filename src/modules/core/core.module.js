@@ -23,7 +23,7 @@
 			closeButton: true,
 			positionClass: 'toast-top-right',
 			timeout: 3000
-		}
+		};
 	};
 
 	angular.module('core', ['ui.router', 'ui.bootstrap'])
@@ -31,4 +31,4 @@
 		.config(['$stateProvider', '$urlRouterProvider', config])
 		.run(['$rootScope', run]);
 
-}())
+}());
