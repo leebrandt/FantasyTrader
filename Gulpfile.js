@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 		reload = browserSync.reload;
 
 var paths = {
-	scripts: ['src/app.js', 'src/fakeData.js', 'src/app-controller.js', 'src/modules/**/*.js'],
+	scripts: ['src/app.js', 'src/fakeData.js', 'src/app-controller.js', 'src/modules/**/*.js', '!src/modules/**/*.test.js', '!src/modules/**/*.spec.js'],
 	html: ['src/**/*.html'],
 	unitTests: ['src/modules/**/*.test.js']
 }
@@ -34,7 +34,6 @@ gulp.task('browser-sync', function(){
 	});
 });
 
-
 gulp.task('test:unit', function(){
 	return gulp.src('./foobar')
     .pipe(karma({
@@ -57,7 +56,6 @@ gulp.task('test:e2e', ['webdriver_update'], function(){
   })) 
   .on('error', function(e) { throw e });
 });
-
 
 gulp.task('tdd', function(){
 	karma.start({

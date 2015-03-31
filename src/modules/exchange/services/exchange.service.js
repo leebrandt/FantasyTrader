@@ -14,7 +14,7 @@
 					if(found){
 						deferred.resolve(found);
 					}else{
-						deferred.reject('Unable to find exchange with id of', id);
+						deferred.reject('Unable to find exchange with id of ' + id);
 					}
 					return deferred.promise;
 				};
@@ -22,9 +22,9 @@
 		return {
 			List: list,
 			GetById: getById
-		}
-	}
+		};
+	};
 
 	angular.module('exchange')
-		.service('ExchangeSvc', ['$q', exchangeSvc])
+		.service('ExchangeSvc', ['$q', exchangeSvc]);
 }());

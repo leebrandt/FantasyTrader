@@ -8,15 +8,10 @@
 			$http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=JSON_CALLBACK&q=http://feeds.feedburner.com/benzinga')
 				.success(function(results){
 					ctrl.news = results.responseData.feed;
-					console.log(results);
 				})
 				.error(function(err){
 					console.log(err);
 				});
-		};
-
-		this.loadNewsItem = function(){
-
 		};
 
 		return ctrl;

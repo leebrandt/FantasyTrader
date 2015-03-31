@@ -10,7 +10,7 @@
 			});
 	};
 
-	angular.module('registration', ['vcRecaptcha'])
+	angular.module('registration', ['ui.router', 'vcRecaptcha'])
 		.config(['$stateProvider', config]);
 
 }());

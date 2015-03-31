@@ -3,8 +3,8 @@
 
 	var filter = function ($filter) {
 	  return function (input) {
-	  	if(moment(input).isValid()){
-	  		return moment(input).fromNow();
+	  	if(moment(new Date(input)).isValid()){
+	  		return moment(new Date(input)).fromNow();
 	  	}else{
 	  		return input;
 	  	}

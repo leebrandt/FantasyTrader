@@ -6,13 +6,9 @@
 			.state('news', {
 				url: '/news',
 				templateUrl: '/modules/news/views/news.list.html'
-			})
-			.state('news-detail',{
-				url: '/news/:id',
-				templateUrl: '/modules/news/views/news.detail.html'
 			});
 	};
 
-	angular.module('news', [])
+	angular.module('news', ['ui.router'])
 		.config(['$stateProvider', config]);
 }());

@@ -1,15 +1,17 @@
-describe('Core Controller', function(){
-	'use strict';
+describe('Core Module', function(){
+	describe('Core Controller', function(){
+		'use strict';
 
-	beforeEach(module('core'));
+		beforeEach(module('core'));
 
-	var controller;
-	beforeEach(inject(function($controller){
-		controller = $controller('CoreCtrl');
-	}));
+		var controller;
+		beforeEach(inject(function($controller){
+			controller = $controller('CoreCtrl');
+		}));
 
-	it('should be defined', function(){
-		expect(controller).toBeDefined();
+		it('should be defined', function(){
+			expect(controller).toBeDefined();
+		});
+
 	});
-
 });
