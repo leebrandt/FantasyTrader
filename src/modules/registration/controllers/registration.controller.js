@@ -1,17 +1,26 @@
 (function(){
 	'use strict';
 	
-	var registrationCtrl = function(){
+	var registrationCtrl = function($state, RegistrationSvc, Logger){
 		var ctrl = this;
 
-		ctrl.firstName = '';
-		ctrl.lastName = '';
-		ctrl.emailAddress = '';
-		ctrl.captcha = '';
+		ctrl.register = function(){
+			RegistrationSvc.Initiate(ctrl.user)
+				.then(
+					//success
+					function(user){
+						$state.go('thanks');
+					}, 
+					//error
+					function(err){
+						Logger.LogError(err);
+					}
+				);
+		};
 
 		return ctrl;
 	};
 
 	angular.module('registration')
-		.controller('RegistrationCtrl', [registrationCtrl]);
+		.controller('RegistrationCtrl', ['$state', 'RegistrationSvc', 'Logger', registrationCtrl]);
 }());

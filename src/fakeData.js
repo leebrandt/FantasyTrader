@@ -91,5 +91,27 @@ var fakeData = {
 						name: 'Hugo Boss',
 						changePct: -.032
 					}
-				}]
+				}],
+
+	users: [{
+		email:'rmullinnix@yahoo.com',
+		pwd: 'testpwd',
+		firstName: 'Rob',
+		lastName: 'Mullinnix'
+	},{
+		email:'leebrandt@gmail.com',
+		pwd: 'p@ssw0rd',
+		firstName: 'Lee',
+		lastName: 'Brandt'
+	},{
+		email:'chowdown@wideload.com',
+		pwd: 'L@rdA$$',
+		firstName: 'David',
+		lastName: 'Hogan'
+	},{
+		email:'rbrauer@thebody.com',
+		pwd: 'Tr@!N',
+		firstName: 'Ray',
+		lastName: 'Brauer'
+	}]
 };

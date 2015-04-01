@@ -2,23 +2,22 @@
 	<h1>Fantasy Trader Registration</h1>
 	<form class="registration-form">
 		<div class="form-group">
-			<input type="email" name="firstName" class="form-input" placeholder="First Name" data-ng-model="vm.firstName" required/>
+			<input type="text" name="firstName" class="form-input" placeholder="First Name" data-ng-model="vm.user.firstName" required/>
 		</div>
 
 		<div class="form-group">
-			<input type="email" name="lastName" class="form-input" placeholder="Last Name" data-ng-model="vm.lastName" required/>
+			<input type="text" name="lastName" class="form-input" placeholder="Last Name" data-ng-model="vm.user.lastName" required/>
 		</div>
 
 		<div class="form-group">
-			<input type="email" name="username" class="form-input" placeholder="Email Address" data-ng-model="vm.username" required/>
+			<input type="email" name="email" class="form-input" placeholder="Email Address" data-ng-model="vm.user.email" required/>
 		</div>
 
-		<div class="captcha" vc-recaptcha theme="white" lang="en" data-ng-model="vm.captcha"
-		key="'6LcJO8ESAAAAAFca2-gBw4azCGEG4HFxNFzNPp1K'">
+		<div class="captcha" vc-recaptcha theme="white" lang="en" data-ng-model="vm.user.captcha"	key="'6LcJO8ESAAAAAFca2-gBw4azCGEG4HFxNFzNPp1K'">
     </div>
 
 		<div class="form-actions">
-			<a data-ng-href="#">Register</a>
+			<a data-ng-href="#" data-ng-click="vm.register()">Register</a>
 		</div>
 	</form>
 </section>
