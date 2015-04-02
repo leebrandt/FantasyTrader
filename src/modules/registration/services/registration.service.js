@@ -3,11 +3,19 @@
 
 	var registrationService = function($http){
 		var initiate = function(user){
-			return $http.post('http://localhost/fakeRegistrationSvc');
-		};
+				return $http.post('http://localhost/fakeRegistrationSvc');
+			},
+			getById = function(key){
+				return $http.get('http://localhost/fakeRegistrationSvc/' + key);
+			},
+			complete = function(user){
+				return $http.post('http://localhost/fakeRegistrationSvc/' + user.key);
+			};
 
 		return {
-			Initiate: initiate
+			Initiate: initiate,
+			GetById: getById,
+			Complete: complete
 		};
 	};
 
