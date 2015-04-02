@@ -65,10 +65,8 @@ describe('Registration module', function(){
 				it('should log the failure', function(){
 					expect(logService.LogError).toHaveBeenCalledWith('failed');
 				});
-
 			});
-
+			
 		});
-
 	});
 });

@@ -28,12 +28,15 @@ describe('Exchange module', function(){
 		}));
 
 		it('should fail tring to retrieve an exchange that doesn\'t exist in the list of exchanges', inject(function($rootScope){
-			service.GetById(5150).then(function(exchange){
-				this.fail('Testing failure, but called success condition function');
-			}, function(err){
-				expect(err).toBeDefined();
-				expect(err).toEqual('Unable to find exchange with id of 5150');
-			});
+			service.GetById(5150).then(
+				function(exchange){
+					fail('Testing failure, but called success condition function');
+				}, 
+				function(err){
+					expect(err).toBeDefined();
+					expect(err).toEqual('Unable to find exchange with id of 5150');
+				}
+			);
 
 			$rootScope.$apply();
 		}));
