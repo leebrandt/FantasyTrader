@@ -12,6 +12,10 @@
 				title: 'Thanks',
 				url: '/register/thanks',
 				templateUrl: '/modules/registration/views/thanks.html'
+			})
+			.state('complete',{
+				title: 'Complete Registration',
+				url:'/register/complete/:key'
 			});
 	};
 
