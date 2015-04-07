@@ -15,11 +15,13 @@
 			})
 			.state('complete',{
 				title: 'Complete Registration',
-				url:'/register/complete/:key'
+				url:'/register/complete/:key',
+				templateUrl: '/modules/registration/views/complete.html'
 			});
 	};
 
 	angular.module('registration', ['ui.router', 'vcRecaptcha', 'core'])
-		.config(['$stateProvider', config]);
+		.config(['$stateProvider', config])
+		.value('RegistrationApi', 'http://msp0lnans001.etdbw.com/security/registration/');
 
 }());

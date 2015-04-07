@@ -17,17 +17,18 @@ describe('Core Module', function(){
 		}));
 
 		describe('Error logging', function(){
+			var messageData = {data:'Message'};
 			beforeEach(function(){
 				spyOn(console, 'error');
-				service.LogError('message');
+				service.LogError(messageData);
 			});
 
 			it('should log errors to console', function(){
-				expect(console.error).toHaveBeenCalledWith('message');
+				expect(console.error).toHaveBeenCalledWith(messageData);
 			});
 
 			it('should show a toast for errors', function(){
-				expect(toastr.error).toHaveBeenCalledWith('message', 'Error');
+				expect(toastr.error).toHaveBeenCalledWith('Message', 'Error');
 			});
 		});
 

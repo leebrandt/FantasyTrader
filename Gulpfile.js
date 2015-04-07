@@ -67,5 +67,5 @@ gulp.task('dev', ['sass', 'inject', 'browser-sync'], function(){
 	gulp.watch('src/scss/**/*.scss', ['sass']);
 	gulp.watch(paths.html, [reload]);
 	gulp.watch(paths.scripts, ['inject', reload]);
-	gulp.watch(paths.unitTests, ['test:unit']);
+	//gulp.watch(paths.unitTests, ['test:unit']);
 });

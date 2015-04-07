@@ -2,6 +2,7 @@ describe('Registration module', function(){
 	describe('Registration Controller', function(){
 		'use strict';
 
+		//beforeEach(module('fantasyTrader'));
 		beforeEach(module('registration'));
 
 		var controller, regService, $state, $stateParams, deferred;
@@ -20,7 +21,14 @@ describe('Registration module', function(){
 				Logger:logService
 			});
 
-			testUser = {key:'MYREGISTRATIONKEY', firstName:'Jim', lastName:'Bo', email:'jim@bo.com'};
+			testUser = {
+				RegistrantId:'MYREGISTRATIONKEY', 
+				FirstName:'Jim', 
+				LastName:'Bo', 
+				Email:'jim@bo.com',
+				Password: 'P@ssw0rd',
+				Challenge: []
+			};
 		}));
 
 		it('should be defined', function(){
@@ -81,7 +89,7 @@ describe('Registration module', function(){
 			});
 
 			beforeEach(function(){
-				$stateParams.key = testUser.key;
+				$stateParams.key = testUser.RegistrantId;
 				spyOn($state, 'go');
 				spyOn(regService, 'GetById').and.returnValue(deferred.promise);
 				spyOn(logService, 'LogError');
@@ -89,13 +97,13 @@ describe('Registration module', function(){
 			});
 
 			it('should load the registration for a specified key', function(){
-				expect(regService.GetById).toHaveBeenCalledWith(testUser.key);
+				expect(regService.GetById).toHaveBeenCalledWith(testUser.RegistrantId);
 			});
 
 			describe('registration retrieval success', function(){
 
 				beforeEach(function(){
-					deferred.resolve(testUser);
+					deferred.resolve({data:testUser});
 					$scope.$apply();
 				});
 
@@ -129,16 +137,20 @@ describe('Registration module', function(){
 			});
 
 			beforeEach(function () {
+				testUser.Challenge = [];
+				testUser.Password = 'P@ssw0rd';
 				controller.user = testUser;
 				spyOn($state, 'go');
 				spyOn(regService, 'Complete').and.returnValue(deferred.promise);
 				spyOn(logService, 'LogSuccess');	
 				spyOn(logService, 'LogError');
+				spyOn(controller, 'regIsValid').and.returnValue(true);
 				controller.complete();	
 			});
 
 			it('should save the registration information', function(){
-				expect(regService.Complete).toHaveBeenCalledWith(testUser);
+				var expectedDoc = {key:testUser.RegistrantId, Challenge:testUser.Challenge, Password:testUser.Password};
+				expect(regService.Complete).toHaveBeenCalledWith(expectedDoc);
 			});
 
 			describe('registration completion success', function(){

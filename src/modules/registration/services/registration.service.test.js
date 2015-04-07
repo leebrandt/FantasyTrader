@@ -3,12 +3,16 @@ describe('Registration module', function(){
 	
 	describe('Registration Service', function(){
 
-		var regServiceUrl = 'http://localhost/fakeRegistrationSvc', 
+		var regServiceUrl = 'http://localhost/fakeRegistrationSvc/', 
 				key = 'MYKEYVALUEISHERE',
 				errorMessage = 'An error occurred. Here\'s why:';
 
-		beforeEach(module('registration'));
-
+		beforeEach(function(){
+			module('registration')
+			module(function ($provide) {
+            $provide.value('RegistrationApi', regServiceUrl);
+        });
+		});
 		var $httpBackend, svc, testUser;		
 		beforeEach(inject(function($injector, _RegistrationSvc_) {
 			$httpBackend = $injector.get('$httpBackend');
@@ -19,7 +23,7 @@ describe('Registration module', function(){
 		describe('Registration initialiation', function() {
 
 			it('should have a way to initialize the registration', function(){
-				$httpBackend.expectPOST(regServiceUrl).respond(200, testUser);
+				$httpBackend.expectPOST(regServiceUrl + 'user').respond(200, testUser);
 				expect(svc.Initiate).toBeDefined();
 				$httpBackend.flush();
 			});
@@ -32,7 +36,7 @@ describe('Registration module', function(){
 			describe('Successful initialization', function() {
 
 				it('should get a registration token', function(){
-					$httpBackend.whenPOST(regServiceUrl).respond(200, testUser);
+					$httpBackend.whenPOST(regServiceUrl + 'user').respond(200, testUser);
 					initiationPromise.then(
 						function(result){
 							expect(result.data).toEqual(testUser);
@@ -50,7 +54,7 @@ describe('Registration module', function(){
 
 				it('should get a failure reason/description', function(){
 					var errorMessage = 'An error occurred. Here\'s why:';
-					$httpBackend.whenPOST(regServiceUrl).respond(500, {Message:errorMessage});
+					$httpBackend.whenPOST(regServiceUrl + 'user').respond(500, {Message:errorMessage});
 					initiationPromise.then(
 						function(result){
 							fail('Testing failure, but called success condition function');
@@ -74,14 +78,14 @@ describe('Registration module', function(){
 		describe('Registration retrieval', function(){
 
 			it('should retrieve an initialized registration by its key', function(){
-				$httpBackend.expectGET(regServiceUrl+'/'+key).respond(200, {});
+				$httpBackend.expectGET(regServiceUrl+'user/'+key).respond(200, {});
 				expect(svc.GetById(key)).toBeDefined();
 				$httpBackend.flush();
 			});
 
 			describe('successful retrieval of initialized registration', function(){
 				it('should retrieve the initialized registration', function(){
-					$httpBackend.whenGET(regServiceUrl + '/' + key).respond(200, testUser);
+					$httpBackend.whenGET(regServiceUrl + 'user/' + key).respond(200, testUser);
 					svc.GetById(key).then(
 						function(result){
 							expect(result.data).toEqual(testUser);
@@ -96,7 +100,7 @@ describe('Registration module', function(){
 
 			describe('failed retrieval of initialized registration', function(){
 				it('should send a failure reason/description', function(){
-					$httpBackend.whenGET(regServiceUrl+'/'+key).respond(500, {Message:errorMessage});
+					$httpBackend.whenGET(regServiceUrl+'user/'+key).respond(500, {Message:errorMessage});
 					svc.GetById(key).then(
 						function(result){
 							fail('Testing failure, but called success condition function');
@@ -123,14 +127,14 @@ describe('Registration module', function(){
 			});
 
 			it('should have a way to complete the registration', function(){
-				$httpBackend.expectPOST(regServiceUrl+'/'+key).respond(200,{});
+				$httpBackend.expectPOST(regServiceUrl+'user/'+key).respond(200,{});
 				expect(svc.Complete(testUser)).toBeDefined();
 				$httpBackend.flush();
 			});
 
 			describe('successful completion of registration', function(){
 				it('should get the completed registration', function(){
-					$httpBackend.whenPOST(regServiceUrl+'/'+key).respond(200,testUser);
+					$httpBackend.whenPOST(regServiceUrl+'user/'+key).respond(200,testUser);
 					svc.Complete(testUser).then(
 						function(result){
 							expect(result.data).toEqual(testUser);
@@ -145,7 +149,7 @@ describe('Registration module', function(){
 
 			describe('failed completion of registration', function(){
 				it('should get a failure reson/description', function(){
-					$httpBackend.whenPOST(regServiceUrl+'/'+key).respond(500,{Message:errorMessage});
+					$httpBackend.whenPOST(regServiceUrl+'user/'+key).respond(500,{Message:errorMessage});
 					svc.Complete(testUser).then(
 						function(result){
 							fail('succeeded testing the failure condition');

@@ -4,7 +4,7 @@
 	var logger = function(){
 		var logError = function(message){
 			console.error(message);
-			toastr.error(message, 'Error');
+			toastr.error(message.data || 'An Error occurred', 'Error');
 		},
 		logWarning = function(message){
 			console.warn(message);

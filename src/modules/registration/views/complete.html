@@ -1,0 +1,46 @@
+<section data-ng-controller="RegistrationCtrl as vm" data-ng-init="vm.loadRegistration();vm.loadSecurityQuestions()">
+
+	<span data-ng-bind="vm.user.FirstName"></span>
+	<span data-ng-bind="vm.user.LastName"></span>
+	<span data-ng-bind="vm.user.Email"></span>
+
+	<section class="form-group">
+	  <label for="password">Password:</label>
+	  <div class="input-group">
+	    <input type="{{vm.passwordFieldType}}" class="form-input" id="password" required ng-pattern="vm.passwordRegex" ng-model="vm.user.Password"/>
+      <span class="input-group-addon">
+        <input type="checkbox" tooltip="Show Password Characters" ng-click="vm.togglePasswordType()" />
+      </span>
+	  </div>
+	</section> 
+
+	<section class="form-group">
+	  <label for="question" class="label">Question:</label>
+	  <select id="question" ng-model="vm.currentQuestion"
+	          ng-options="q for q in vm.securityQuestions">
+	    <option value="">Select a security question...</option>
+	  </select>
+	</section>
+	<section class="form-group">
+	  <label for="answer" class="label">Answer:</label>
+	  <input type="text" id="answer" class="form-input" ng-model="vm.currentAnswer"/>
+	</section>
+	<button class="btn btn-success" ng-click="vm.AddSecurityQuestion()">Add Question/Answer</button>
+	<fieldset>
+	  <legend>Selected Questions</legend>
+	  <dl>
+	    <dt ng-repeat-start="q in vm.user.Challenge">{{q.question}}</dt>
+	    <dd ng-repeat-end>{{q.answer}}</dd>
+	  </dl>
+	</fieldset>
+
+	<section>
+    <button class="btn btn-primary" ng-click="vm.complete()" ng-show="vm.regIsValid()" ng-disabled="">
+      Finish
+      <span class="fa fa-check"></span>
+    </button>
+  </section>
+
+  <div data-ng-bind="vm.user | json"></div>
+
+</section>

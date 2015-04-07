@@ -1,10 +1,12 @@
 (function(){
   'use strict';
 
-	var config = function(snapRemoteProvider){
+	var config = function(snapRemoteProvider, $httpProvider){
 		snapRemoteProvider.globalOptions = {
       disable: 'right'
-    }
+    };
+
+    $httpProvider.interceptors.push('httpInterceptor');
 	};
 
 	var run = function($rootScope, snapRemote){
@@ -42,7 +44,7 @@
 	angular.module('fantasyTrader', 
     ['ui.bootstrap', 'ui.router', 'snap', 
     'core', 'registration', 'authentication', 'exchange', 'news'])
-		.config(['snapRemoteProvider', config])
+		.config(['snapRemoteProvider', '$httpProvider', config])
 		.run(['$rootScope', 'snapRemote', run]);
 	
 }());

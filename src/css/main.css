@@ -11547,9 +11547,17 @@ input[type=text], input[type=password], input[type=email], input[type=phone], in
   width: 100%;
   margin: 1rem 0; }
   input[type=text].ng-dirty.ng-invalid, input[type=password].ng-dirty.ng-invalid, input[type=email].ng-dirty.ng-invalid, input[type=phone].ng-dirty.ng-invalid, input[type=url].ng-dirty.ng-invalid {
-    background: #fff url(/img/invalid.png) no-repeat 98% center; }
+    background: #fff url(/img/red-x.png) no-repeat 98% center; }
   input[type=text].ng-dirty.ng-valid, input[type=password].ng-dirty.ng-valid, input[type=email].ng-dirty.ng-valid, input[type=phone].ng-dirty.ng-valid, input[type=url].ng-dirty.ng-valid {
-    background: #fff url(/img/valid.png) no-repeat 98% center; }
+    background: #fff url(/img/green-check.png) no-repeat 98% center; }
+
+select {
+  position: relative;
+  background-color: transparent;
+  width: 100%;
+  margin: 1rem 0; }
+  select option {
+    color: #0F0; }
 
 form .fa-question-circle {
   vertical-align: text-bottom;
