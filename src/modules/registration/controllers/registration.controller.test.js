@@ -2,7 +2,6 @@ describe('Registration module', function(){
 	describe('Registration Controller', function(){
 		'use strict';
 
-		//beforeEach(module('fantasyTrader'));
 		beforeEach(module('registration'));
 
 		var controller, regService, $state, $stateParams, deferred;
@@ -16,6 +15,7 @@ describe('Registration module', function(){
 
 			controller = $controller('RegistrationCtrl', {
 				$scope:$scope, 
+				$state:$state,
 				$stateParams: $stateParams,
 				RegistrationSvc:regService, 
 				Logger:logService

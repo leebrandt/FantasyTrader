@@ -10,7 +10,8 @@
 			});
 	};
 
-	angular.module('authentication', ['ui.router', 'core', 'exchange'])
-		.config(['$stateProvider', config]);
+	angular.module('authentication', ['ui.router', 'base64', 'core'])
+		.config(['$stateProvider', config])
+		.value('AuthenticationApi', 'http://msp0lnans001.etdbw.com/security/authentication');
 
 }());

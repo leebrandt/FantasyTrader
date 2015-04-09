@@ -8,7 +8,7 @@ describe('Registration module', function(){
 				errorMessage = 'An error occurred. Here\'s why:';
 
 		beforeEach(function(){
-			module('registration')
+			module('registration');
 			module(function ($provide) {
             $provide.value('RegistrationApi', regServiceUrl);
         });
@@ -148,7 +148,7 @@ describe('Registration module', function(){
 			});
 
 			describe('failed completion of registration', function(){
-				it('should get a failure reson/description', function(){
+				it('should get a failure reason/description', function(){
 					$httpBackend.whenPOST(regServiceUrl+'user/'+key).respond(500,{Message:errorMessage});
 					svc.Complete(testUser).then(
 						function(result){

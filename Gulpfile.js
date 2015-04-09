@@ -47,6 +47,7 @@ gulp.task('test:unit', function(){
     });
 });
 
+/*
 gulp.task('webdriver_update', webdriver_update);
 gulp.task('test:e2e', ['webdriver_update'], function(){
 	gulp.src('./foobar')
@@ -56,16 +57,14 @@ gulp.task('test:e2e', ['webdriver_update'], function(){
   })) 
   .on('error', function(e) { throw e });
 });
-
-gulp.task('tdd', function(){
-	karma.start({
-    configFile: __dirname + '/karma.conf.js'
-  });	
+*/
+gulp.task('tdd', ['test:unit'], function(){
+	gulp.watch(paths.unitTests, ['test:unit']);
+	gulp.watch(paths.scripts, ['test:unit']);
 });
 
 gulp.task('dev', ['sass', 'inject', 'browser-sync'], function(){
 	gulp.watch('src/scss/**/*.scss', ['sass']);
 	gulp.watch(paths.html, [reload]);
 	gulp.watch(paths.scripts, ['inject', reload]);
-	//gulp.watch(paths.unitTests, ['test:unit']);
 });

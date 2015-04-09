@@ -17,6 +17,7 @@ module.exports = function(config) {
       'src/lib/angular/angular.min.js',
       'src/lib/angular-mocks/angular-mocks.js',
       'src/lib/ui-router/release/angular-ui-router.min.js',
+      'src/lib/angular-base64/angular-base64.js',
       'src/lib/angular-bootstrap/ui-bootstrap.min.js',
       'src/lib/lodash/lodash.min.js',
       'src/lib/angular-recaptcha/release/angular-recaptcha.min.js',

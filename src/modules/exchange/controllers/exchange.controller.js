@@ -10,7 +10,7 @@
 					exchange.currentWeek = moment(exchange.startDate).twix(moment()).count('weeks');
 					exchange.endDate = moment(exchange.startDate).add(exchange.durationWeeks, 'weeks').format('M/D');
 					return exchange;
-				})
+				});
 				ctrl.exchangeList = result;
 			},
 			function(err){
