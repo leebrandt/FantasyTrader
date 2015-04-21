@@ -53,4 +53,4 @@
 	angular.module('core')
 		.controller('CoreCtrl', ['$scope', '$state', 'Logger', 'AuthenticationSvc', 'SessionSvc', 'Site', coreCtrl]);
 
-}(_));
+}());

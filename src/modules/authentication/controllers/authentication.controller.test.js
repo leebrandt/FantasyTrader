@@ -97,17 +97,21 @@ describe('Authentication module', function(){
 				expect(AuthenticationSvc.Login).toHaveBeenCalledWith(controller.credentials);
 			});
 
-			it('should create a session on successful login', function(){
+			it('should broadcast the successful login', inject(function($injector){
+				var rootScope = $injector.get('$rootScope');
+				spyOn(rootScope, '$broadcast').and.callThrough();
 				deferred.resolve({data:controller.credentials});
 				$scope.$apply();
-				expect(SessionSvc.CreateSession).toHaveBeenCalledWith(controller.credentials);					
-			});
+				expect(rootScope.$broadcast).toHaveBeenCalledWith('auth-login-success', controller.credentials);
+			}));
 
-			it('should not create a session on unsuccessful login', function(){
+			it('should not create a session on unsuccessful login',  inject(function($injector){
+				var rootScope = $injector.get('$rootScope');
+				spyOn(rootScope, '$broadcast').and.callThrough();
 				deferred.reject({data:'Authentication Error'});
 				$scope.$apply();
-				expect(SessionSvc.CreateSession).not.toHaveBeenCalled();
-			});
+				expect(rootScope.$broadcast).not.toHaveBeenCalledWith('auth-login-success', controller.credentials);
+			}));
 
 			it('should let the user know that the login attempt was unsuccessful', function(){
 				deferred.reject({data:'Authentication Error'});
