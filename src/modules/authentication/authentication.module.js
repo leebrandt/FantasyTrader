@@ -7,6 +7,11 @@
 				title: 'Login',
 				url: '/login',
 				templateUrl: '/modules/authentication/views/login.html'
+			})
+			.state('forgot',{
+				title: 'Forgot Password',
+				url: '/forgot',
+				templateUrl: '/modules/authentication/views/forgot.html'
 			});
 	};
 

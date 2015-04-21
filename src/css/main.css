@@ -11683,6 +11683,29 @@ snap-content {
       overflow: visible; } }
 
 /* Module Styles */
+.market {
+  clear: both;
+  margin: 0 .5rem;
+  padding: 1rem 0; }
+  .market .info {
+    width: 50%;
+    float: left; }
+    .market .info .name {
+      font-weight: bold;
+      display: block; }
+    .market .info .value {
+      font-size: 2.5rem;
+      display: block; }
+    .market .info .change.down {
+      color: #F00; }
+    .market .info .change.up {
+      color: #0A0; }
+  .market .graph {
+    width: % 50;
+    float: right;
+    font-size: 3rem;
+    color: #EEE; }
+
 .captcha {
   min-height: 14rem; }
 

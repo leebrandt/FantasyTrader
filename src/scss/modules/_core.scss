@@ -1,0 +1,32 @@
+.market{
+	clear: both;
+	margin: 0 .5rem;
+	padding: 1rem 0;
+	.info{
+		width: 50%;
+		float: left;
+		.name{
+			font-weight: bold;
+			display: block;
+		}
+		.value{
+			font-size: 2.5rem;
+			display: block;
+		}
+		.change{
+			&.down{
+				color: #F00;
+			}
+			&.up{
+				color: #0A0;
+			}
+		}
+
+	}
+	.graph{
+		width: %50;
+		float: right;
+		font-size: 3rem;
+		color: #EEE;
+	}
+}

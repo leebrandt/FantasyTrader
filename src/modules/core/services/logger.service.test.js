@@ -17,7 +17,7 @@ describe('Core Module', function(){
 		}));
 
 		describe('Error logging', function(){
-			var messageData = {data:'Message'};
+			var messageData = 'Message';
 			beforeEach(function(){
 				spyOn(console, 'error');
 				service.LogError(messageData);

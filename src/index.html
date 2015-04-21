@@ -46,11 +46,15 @@
         <ul>
           <li><a data-ng-href="#/">Home</a></li>
           <li><a data-ng-href="#/news">News</a></li>
-          <li><a data-ng-href="#/exchange/list" data-ng-show="app.hasLink('Exchanges')">Exchanges</a></li>
+          <li><a data-ng-href="#/exchange/list" data-ng-show="app.hasLink('myExchanges')">My Exchanges</a></li>
+          <li><a data-ng-href="#/exchange/list" data-ng-show="app.hasLink('openExchanges')">Open Exchanges</a></li>
+          <li><a data-ng-href="#/notifications/list" data-ng-show="app.hasLink('notifications')">Notifications</a></li>
+          <li><a data-ng-href="#/events/list" data-ng-show="app.hasLink('events')">Events</a></li>
           <li><a data-ng-href="#/rules"">Rules</a></li> 
           <li><a data-ng-href="#/indexes" data-ng-show="app.hasLink('Indexes')">Indexes</a></li>
           <li><a class="separator" data-ng-href="#/login" data-ng-show="app.hasAction('login')">Login</a></li>
           <li><a data-ng-href="#/register" data-ng-show="app.hasAction('register')">Register</a></li>
+          <li><a class="separator" data-ng-href="#" data-ng-click="app.logout()" data-ng-show="app.hasAction('logout')">Logout</a></li>
         </ul>
       </nav>
     </div>
@@ -97,19 +101,21 @@
   <script src="/fakeData.js"></script>
   <script src="/modules/authentication/authentication.module.js"></script>
   <script src="/modules/core/core.module.js"></script>
-  <script src="/modules/exchange/exchange.module.js"></script>
   <script src="/modules/hyper-resource/hyper-resource.provider.js"></script>
+  <script src="/modules/exchange/exchange.module.js"></script>
   <script src="/modules/news/news.module.js"></script>
   <script src="/modules/registration/registration.module.js"></script>
   <script src="/modules/authentication/controllers/authentication.controller.js"></script>
   <script src="/modules/authentication/services/authentication.service.js"></script>
   <script src="/modules/core/controllers/core.controller.js"></script>
+  <script src="/modules/core/directives/market.directive.js"></script>
   <script src="/modules/core/filters/ago.filter.js"></script>
   <script src="/modules/core/filters/percent.filter.js"></script>
   <script src="/modules/core/interceptors/http.interceptor.js"></script>
   <script src="/modules/core/services/core.service.js"></script>
   <script src="/modules/core/services/logger.service.js"></script>
   <script src="/modules/core/services/session.service.js"></script>
+  <script src="/modules/core/services/siren.service.js"></script>
   <script src="/modules/exchange/controllers/exchange.controller.js"></script>
   <script src="/modules/exchange/directives/exchange.directive.js"></script>
   <script src="/modules/exchange/directives/stock.directive.js"></script>

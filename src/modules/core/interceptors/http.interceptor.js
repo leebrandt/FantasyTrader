@@ -10,7 +10,7 @@
 
         config.headers = config.headers || {};
         if (currentUser) {
-          config.headers.Authorization = 'Bearer ' + currentUser.token;
+          config.headers.Authorization = currentUser.token_type + ' ' + currentUser.access_token;
         }
 
         if(config.method === 'GET') {

@@ -89,6 +89,16 @@
 				// kick this thing off
 				return getLink(this.Steps.slice(0), {href:ApiRoot + (currentUser ? '/private/' : '/public/') + '?app=' + AppName});
 			};
+			Resource.prototype.Run = function(action, data, cfg){
+				return $http({
+					url:action.href,
+					method:action.method,
+					config:cfg,
+					data:data
+				});					
+			
+			};
+
 		
 			// return a new instance of this thing
 			return new Resource(path);

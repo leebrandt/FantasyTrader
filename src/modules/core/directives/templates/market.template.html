@@ -1,0 +1,11 @@
+<section class="market">
+	<section class="info">
+		<span class="name">{{market.name}}</span>
+		<span class="value">{{market.value | number:2}}</span>
+		<span class="change" data-ng-class="{down:market.change < 0, up:market.change > 0}">
+		<span>{{market.change | number:2 }}</span>			
+		<span>({{market.changePct | percentage:2}})</span>
+		</span>
+	</section>
+	<span class="graph">[graph]</span>
+</section>
