@@ -110,3 +110,64 @@ header.topbar {
 		}
 	}
 }
+
+.snap-drawer{
+  @include mq(960px){
+    visibility: hidden;
+    display: none;
+  }
+  color: #666;
+  border-right: inset 1px #CCC;
+  nav{
+    margin-top: 5rem;
+    margin-left: 0;
+  }
+  ul{
+    list-style: none;
+    padding-left: 0;
+    &:last-child {
+      border-bottom: dotted 1px #CCC;
+    }
+  }
+  li {
+    list-style-type: none;
+  }
+  a{
+    color:#666;
+    font-size: 2rem;
+    display: block;
+    padding: 1rem;
+    border-top: dotted 1px #CCC;
+    &.separator{
+    	border-top: solid 2px #999;
+    }
+    &:hover{
+      color:#000;
+      background-color: #CCC;
+      text-decoration: none;
+    }
+  }
+}
+
+snap-content {
+  @include mq(960px){
+    width: 960px;
+    height: auto;
+    margin: auto;
+    overflow: visible;
+  }
+  background-color: #FFF;
+  //border-left: 1px solid #000;
+  //border-right: 1px solid #000;
+  [snap-toggle="left"] {
+    .icon-bar {
+      display: block;
+      width: 1.5rem;
+      height: .2rem;
+      border-radius: 1px;
+      background-color: #000;
+      margin: .25rem 0;
+    }
+  }
+}
+

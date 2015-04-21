@@ -11597,6 +11597,52 @@ header.topbar {
   .stock .up:before {
     content: "+"; }
 
+.snap-drawer {
+  color: #666;
+  border-right: inset 1px #CCC; }
+  @media screen and (min-width: 960px) {
+    .snap-drawer {
+      visibility: hidden;
+      display: none; } }
+  .snap-drawer nav {
+    margin-top: 5rem;
+    margin-left: 0; }
+  .snap-drawer ul {
+    list-style: none;
+    padding-left: 0; }
+    .snap-drawer ul:last-child {
+      border-bottom: dotted 1px #CCC; }
+  .snap-drawer li {
+    list-style-type: none; }
+  .snap-drawer a {
+    color: #666;
+    font-size: 2rem;
+    display: block;
+    padding: 1rem;
+    border-top: dotted 1px #CCC; }
+    .snap-drawer a.separator {
+      border-top: solid 2px #999; }
+    .snap-drawer a:hover {
+      color: #000;
+      background-color: #CCC;
+      text-decoration: none; }
+
+snap-content {
+  background-color: #FFF; }
+  @media screen and (min-width: 960px) {
+    snap-content {
+      width: 960px;
+      height: auto;
+      margin: auto;
+      overflow: visible; } }
+  snap-content [snap-toggle="left"] .icon-bar {
+    display: block;
+    width: 1.5rem;
+    height: .2rem;
+    border-radius: 1px;
+    background-color: #000;
+    margin: .25rem 0; }
+
 /* Overrides */
 snap-drawer {
   background-color: #EEE;

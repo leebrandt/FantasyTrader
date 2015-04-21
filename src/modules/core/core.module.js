@@ -15,7 +15,7 @@
 				templateUrl: 'modules/core/views/rules.html'
 			});
 
-			$urlRouterProvider.otherwise('/login');
+			$urlRouterProvider.otherwise('/');
 	};
 
 	var run = function($rootScope){
@@ -26,7 +26,7 @@
 		};
 	};
 
-	angular.module('core', ['ui.router', 'ui.bootstrap', 'authentication'])
+	angular.module('core', ['ui.router', 'ui.bootstrap', 'authentication', 'hyper-resource'])
 	.constant('toastr', window.toastr)
 		.config(['$stateProvider', '$urlRouterProvider', config])
 		.run(['$rootScope', run]);

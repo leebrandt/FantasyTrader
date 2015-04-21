@@ -10,11 +10,11 @@
 
         config.headers = config.headers || {};
         if (currentUser) {
-          config.headers.authorization = 'Bearer ' + currentUser.token;
+          config.headers.Authorization = 'Bearer ' + currentUser.token;
         }
 
         if(config.method === 'GET') {
-          config.headers.accept = 'application/vnd.siren+json';
+          config.headers.Accept = 'application/vnd.siren+json';
         }else{
         	config.headers['Content-Type'] = 'application/json';
         }

@@ -1,12 +1,17 @@
 (function(){
   'use strict';
 
-	var config = function(snapRemoteProvider, $httpProvider){
+	var config = function(snapRemoteProvider, $httpProvider, HyperResourceProvider){
+    HyperResourceProvider.SetApiRoot('http://msp0lnans001.etdbw.com/site/map');
+    HyperResourceProvider.SetAppName('FantasyTrader');
+    
 		snapRemoteProvider.globalOptions = {
       disable: 'right'
     };
 
     $httpProvider.interceptors.push('httpInterceptor');
+
+
 	};
 
 	var run = function($rootScope, snapRemote){
@@ -42,9 +47,9 @@
 	};
 
 	angular.module('fantasyTrader', 
-    ['ui.bootstrap', 'ui.router', 'snap', 
+    ['ui.bootstrap', 'ui.router', 'snap', 'hyper-resource',
     'core', 'registration', 'authentication', 'exchange', 'news'])
-		.config(['snapRemoteProvider', '$httpProvider', config])
+		.config(['snapRemoteProvider', '$httpProvider', 'HyperResourceProvider', config])
 		.run(['$rootScope', 'snapRemote', run]);
 	
 }());

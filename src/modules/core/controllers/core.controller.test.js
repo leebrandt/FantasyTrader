@@ -13,5 +13,11 @@ describe('Core Module', function(){
 			expect(controller).toBeDefined();
 		});
 
+		it('should be able to initialize', function(){
+			expect(typeof controller.init).toBe('function');
+		});
+
+		
+
 	});
 });

@@ -4,8 +4,8 @@ describe('Registration module', function(){
 
 		beforeEach(module('registration'));
 
-		var controller, regService, $state, $stateParams, deferred;
-		beforeEach(inject(function($controller, $q, $rootScope, _$state_, _$stateParams_, _RegistrationSvc_, _Logger_){
+		var controller, regService, $state, $stateParams, $httpBackend, deferred;
+		beforeEach(inject(function($controller, $httpBackend, $q, $rootScope, _$state_, _$stateParams_, _RegistrationSvc_, _Logger_){
 			$scope = $rootScope.$new();
 			$state = _$state_;
 			$stateParams = _$stateParams_;
@@ -31,6 +31,11 @@ describe('Registration module', function(){
 			};
 		}));
 
+		beforeEach(inject(function($injector){
+			$httpBackend = $injector.get('$httpBackend');
+			$httpBackend.whenGET('modules/core/views/home.html').respond(200);
+		}));
+
 		it('should be defined', function(){
 			expect(controller).toBeDefined();
 		});
@@ -46,7 +51,7 @@ describe('Registration module', function(){
 				spyOn($state, 'go');
       	spyOn(regService, 'Initiate').and.returnValue(deferred.promise);
       	spyOn(logService, 'LogError');
-
+				
 				controller.user = testUser;
 				controller.register();
 			});

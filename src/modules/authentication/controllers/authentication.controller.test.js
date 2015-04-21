@@ -86,11 +86,12 @@ describe('Authentication module', function(){
 
 		describe('logging in', function(){
 
-			beforeEach(function(){
+			beforeEach(inject(function($httpBackend){
+				$httpBackend.when('GET', 'modules/core/views/home.html').respond(200);
 				controller.credentials.username = 'e@mail.com';
 				controller.credentials.password = 'myPassw0rd';
 				controller.login();
-			});
+			}));
 
 			it('should call the login service once the email and password are provided', function(){
 				expect(AuthenticationSvc.Login).toHaveBeenCalledWith(controller.credentials);
