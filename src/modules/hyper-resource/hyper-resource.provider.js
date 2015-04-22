@@ -28,8 +28,7 @@
 	// the final resource from the provider
 	function hyperResource($window, $http, $q){
 		function resourceFactory(path){
-       var currentUser = angular.fromJson($window.sessionStorage.currentUser);
-
+       
 			// define a resource type with the path
 			var Resource = function(path){
 				this.Path = path;
@@ -85,6 +84,9 @@
 					// return the promise to be fulfilled once we've walked the walk
 					return deferred.promise;
 				}
+
+				// check if we're logged in or not
+				var currentUser = angular.fromJson($window.sessionStorage.currentUser);
 
 				// kick this thing off
 				return getLink(this.Steps.slice(0), {href:ApiRoot + (currentUser ? '/private/' : '/public/') + '?app=' + AppName});

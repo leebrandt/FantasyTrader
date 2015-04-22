@@ -6,32 +6,38 @@
     },
     "actions": [
       {
-        "name": "login",
+        "name": "logout",
         "class": "Authentication",
-        "method": "POST",
-        "href": "http://msp0lnans001.etdbw.com/security/authentication/token?grant_type=client_credentials"
+        "method": "DELETE",
+        "href": "http://msp0lnans001.etdbw.com/security/authentication/token"
       },
       {
-        "name": "register",
-        "class": "Registration",
+        "name": "CreateExchange",
+        "class": "Exchange",
         "method": "POST",
-        "href": "http://msp0lnans001.etdbw.com/security/registration/user"
-      },
-      {
-        "name": "forgotpwd",
-        "class": "Account",
-        "method": "PUT",
-        "href": "http://msp0lnans001.etdbw.com/security/account/password/{UserId}"
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/exchange/"
       }
     ],
     "links": [
       {
-        "rel": "Headlines",
-        "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/headline"
+        "rel": "myExchanges",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/exchange?status=open&myrole=participant"
       },
       {
-        "rel": "Indexes",
-        "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/index"
+        "rel": "openExchanges",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/exchange?status=open&myrole=none&count=5"
+      },
+      {
+        "rel": "notifcations",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/notification"
+      },
+      {
+        "rel": "notifcationcount",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/notification/count"
+      },
+      {
+        "rel": "events",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/event?status=open"
       }
     ]
   },
@@ -44,9 +50,10 @@
     "transformResponse": [
       null
     ],
-    "url": "http://msp0lnans001.etdbw.com/site/map/public/?app=FantasyTrader",
+    "url": "http://msp0lnans001.etdbw.com/site/map/private/?app=FantasyTrader",
     "headers": {
-      "Accept": "application/vnd.siren+json"
+      "Accept": "application/vnd.siren+json",
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0Mjk3NDI2MDEsInNjb3BlIjpbImFjY291bnQ6cmVhZDpbZjY5OGQxODUtNWM3NC00ODU0LTY0OGItMzE0Mjg2Y2QwODU0XSIsImFjY291bnQ6dXBkYXRlOltmNjk4ZDE4NS01Yzc0LTQ4NTQtNjQ4Yi0zMTQyODZjZDA4NTRdIl0sInVzZXIiOiJsZWVicmFuZHRAZ21haWwuY29tIiwidXNlcnV1aWQiOiJmNjk4ZDE4NS01Yzc0LTQ4NTQtNjQ4Yi0zMTQyODZjZDA4NTQifQ.Y8-RmzGFD4cESllof-lO7BPQZ8evw705rm_oNdV3OFOg8r2-dHjNS2Aln894hekyLjXNqIB1WQ281QIX58XFZQHzxtKWeKw4uaEePbNpJ-9NRjXa8NUywLnADfZsKrz9eGi2ifFneOW8cW84F1qdJT7Yu9S-wKRF-yaFikTUxUF3QRunJREiWRMTZtAr4irNwoYeQPomKsC02Otf09FqMhGl5fnCFRXL9RPQfFRHCIEFoHkL67D3xNTfOk6GFVnbfWN6wMz99itl_bpNaMFMgy7NqvCneWUjJaTCyqVHxFvtjhn_84ogk4CMojHO36Qnm4p3AcJJNSmNomHZJ722hA"
     }
   },
   "statusText": "OK"

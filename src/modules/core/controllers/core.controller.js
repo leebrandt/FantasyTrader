@@ -17,6 +17,12 @@
     };
 
     ctrl.logout = function(){
+      Site.Get().then(function(site){
+        var action = _.find(site.actions, {'name':'logout'});
+        Site.Run(action).then(function(){
+          $scope.$broadcast('auth-logout-success');
+        });
+      })
       var currentUser = SessionSvc.GetCurrentUser();
       AuthenticationSvc.Logout(currentUser)
         .then(function(){
@@ -38,11 +44,16 @@
       return false;
     };
 
+    $scope.$on('auth-logout-success', function(event){
+      SessionSvc.DestroySession();
+      ctrl.init();
+      Logger.LogSuccess('Successfully logged out.');
+      $state.go('home');
+    });
+
     $scope.$on('auth-login-success', function(event, user){
       SessionSvc.CreateSession(user);
-      Site.Get().then(function(result){ 
-        ctrl.site = result;
-      });
+      ctrl.init();
       Logger.LogSuccess('Welcome ' + user.username+'!');
       $state.go('home');
     });
