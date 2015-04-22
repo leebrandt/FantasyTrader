@@ -2,87 +2,59 @@ describe('Authentication module', function(){
 	describe('Authentication Service', function() {
 		'use strict';
 
-		var authServiceUrl = 'http://localhost/fakeAuthenticationSvc';
-		beforeEach(function(){
-			module('authentication');
-			module(function ($provide) {
-            $provide.value('AuthenticationApi', authServiceUrl);
-        });
-		});
+		beforeEach(module('authentication'));
 
-		var AuthenticationSvc, SessionSvc, $httpBackend;
-		beforeEach(inject(function($injector, _AuthenticationSvc_, _SessionSvc_){
-			$httpBackend = $injector.get('$httpBackend');
-			AuthenticationSvc = _AuthenticationSvc_;
-			SessionSvc = _SessionSvc_;
-			testUser = {token:'98FJ84J2O8WJEFTOKEN98JEWD', username:'me@mail.com', password:'P@ssw0rd'};
+		var AuthenticationSvc, Site, Logger, actionPromise, sitePromise, testCredentials;
+		beforeEach(inject(function($q, _Site_, _Logger_){
+			//$httpBackend.when('GET', '/modules/authentication/views/login.html').respond(200);
+			Site = _Site_;
+			Logger = _Logger_;
+			actionPromise = $q.defer();
+			sitePromise = $q.defer();
+			spyOn(Site, 'Get').and.returnValue(sitePromise.promise);
+			spyOn(Site, 'Run').and.returnValue(actionPromise.promise);
+			spyOn(Logger, 'LogError').and.callThrough();
+			testCredentials = {username:'me@mail.com', password:'myP@ssw0rd'};
+			
 		}));
 
-		describe('authentication success', function(){
-			beforeEach(function(){
-				$httpBackend.whenPOST(authServiceUrl + '/token').respond(200,testUser);
-			});
+		beforeEach(inject(function(_AuthenticationSvc_) {
+			AuthenticationSvc = _AuthenticationSvc_;
+		}));
 
-			it('should return the user information', function(){
-				AuthenticationSvc.Login(testUser).then(
-					function(result){
-						expect(result.data).toEqual(testUser);
-					},
-					function(err){
-						fail('Testing for success but failed');
-					}
-				);
-				$httpBackend.flush();
-			});
-		});
-
-		describe('authentication failure', function(){
-			beforeEach(function(){
-				$httpBackend.whenPOST(authServiceUrl + '/token').respond(500, {message:'Server error'});
-			});
-
-			it('should return the user information', function(){
-				AuthenticationSvc.Login(testUser).then(
-					function(result){
-						fail('Testing for failure but succeeded');						
-					},
-					function(err){
-						expect(err.data.message).toEqual('Server error');
-					}
-				);
-				$httpBackend.flush();
-			});
-		});
-
-		describe('logout', function(){
-
+		describe('Logging in', function(){
+			
 			beforeEach(function() {
-				$httpBackend.whenDELETE(authServiceUrl + '/token').respond(200);
+				AuthenticationSvc.Login(testCredentials);
 			});
 
-			it('should be able to log the user out', function(){
-				expect(AuthenticationSvc.Logout).toBeDefined();
+			describe('successful login', function(){
+				var loginAction = {name:'login', href:'http://myfakeapi.com'};
+				beforeEach(inject(function($rootScope) {
+					sitePromise.resolve({actions:[loginAction]});
+					$rootScope.$apply();
+				}));
+
+				it('should call the Site resource Get to get the main payload', function(){
+					expect(Site.Get).toHaveBeenCalled();
+				});
+
+				it('should call the Site action Run to get the login payload', function(){
+					expect(Site.Run).toHaveBeenCalledWith(loginAction, null, jasmine.any(Object));
+				});
 			});
 
-			it('should destroy the user\'s session', function(){
-				spyOn(SessionSvc, 'DestroySession');
-				AuthenticationSvc.Logout(testUser).then(
-					function(result){
-						expect(SessionSvc.DestroySession).toHaveBeenCalled();
-					},
-					function(err){
-						fail('Testing success condition, but failed.');
-					}
-				);
-				$httpBackend.flush();
-			});
+			describe('failed login', function(){
 
+				beforeEach(inject(function($rootScope) {
+					sitePromise.reject('Error message');
+					$rootScope.$apply();
+				}));
+
+				it('should log the faulure reason', function(){
+					expect(Logger.LogError).toHaveBeenCalledWith('Error message');
+				});
+			});
 		});
-
-		afterEach (function () {
-      $httpBackend.verifyNoOutstandingExpectation ();
-      $httpBackend.verifyNoOutstandingRequest ();
-    });
-
 	});
 });
