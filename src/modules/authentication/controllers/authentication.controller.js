@@ -1,11 +1,12 @@
 (function(){
 	'use strict';
 
-	var authenticationCtrl = function($rootScope, $state, SirenSvc, AuthenticationSvc, SessionSvc, Logger, Site){
+	var authenticationCtrl = function($rootScope, $state, $base64, SessionSvc, Logger, Site){
 		var ctrl = this;
 		ctrl.step = 1;
 		ctrl.credentials = {};
 
+		
 		ctrl.continue = function(){
 			if(ctrl.credentials.username){
 				ctrl.step++;
@@ -16,8 +17,14 @@
 
 		ctrl.login = function(){
 			if(ctrl.credentials.password){
-				AuthenticationSvc.Login(ctrl.credentials)
-					.then(
+				Site.Get().then(function(site){
+					var action = _.find(site.actions, {'name':'login'});
+					var config = {
+						headers:{
+							Authorization: 'Basic ' + $base64.encode(ctrl.credentials.username + ':' + ctrl.credentials.password)
+						}
+					};
+					Site.Run(action, null, config).then(
 						//success
 						function(result){
 							var user = result.data;
@@ -26,9 +33,9 @@
 						//error
 						function(err){
 							ctrl.step--;
-							Logger.LogError(err);
-						}
-					);
+							Logger.LogError(err.data);
+						});
+				});
 			}else{
 				Logger.LogError('You must enter a password');				
 			}
@@ -74,6 +81,7 @@
 		if(currentUser){
 			$state.go('home');
 		}
+		
 
 		return ctrl;
 
@@ -81,5 +89,5 @@
 	};
 
 	angular.module('authentication')
-		.controller('AuthenticationCtrl', ['$rootScope', '$state', 'SirenSvc', 'AuthenticationSvc', 'SessionSvc', 'Logger', 'Site', authenticationCtrl]);
+		.controller('AuthenticationCtrl', ['$rootScope', '$state', '$base64', 'SessionSvc', 'Logger', 'Site', authenticationCtrl]);
 }());

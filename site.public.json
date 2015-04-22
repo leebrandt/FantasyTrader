@@ -1,0 +1,60 @@
+{
+  "data": {
+    "class": "Site",
+    "properties": {
+      "AppName": "FantasyTrader"
+    },
+    "actions": [
+      {
+        "name": "CreateExchange",
+        "class": "Exchange",
+        "method": "POST",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/exchange/"
+      },
+      {
+        "name": "logout",
+        "class": "Authentication",
+        "method": "DELETE",
+        "href": "http://msp0lnans001.etdbw.com/security/authentication/token"
+      }
+    ],
+    "links": [
+      {
+        "rel": "myExchanges",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/exchange?status=open&myrole=participant"
+      },
+      {
+        "rel": "openExchanges",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/exchange?status=open&myrole=none&count=5"
+      },
+      {
+        "rel": "notifcations",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/notification"
+      },
+      {
+        "rel": "notifcationcount",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/notification/count"
+      },
+      {
+        "rel": "events",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/event?status=open"
+      }
+    ]
+  },
+  "status": 200,
+  "config": {
+    "method": "GET",
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "url": "http://msp0lnans001.etdbw.com/site/map/private/?app=FantasyTrader",
+    "headers": {
+      "Accept": "application/vnd.siren+json",
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0Mjk2NzkxODYsInNjb3BlIjpbImFjY291bnQ6cmVhZDpbZjY5OGQxODUtNWM3NC00ODU0LTY0OGItMzE0Mjg2Y2QwODU0XSIsImFjY291bnQ6dXBkYXRlOltmNjk4ZDE4NS01Yzc0LTQ4NTQtNjQ4Yi0zMTQyODZjZDA4NTRdIl0sInVzZXIiOiJsZWVicmFuZHRAZ21haWwuY29tIiwidXNlcnV1aWQiOiJmNjk4ZDE4NS01Yzc0LTQ4NTQtNjQ4Yi0zMTQyODZjZDA4NTQifQ.ZbNB7MBdsQqgAqi2lVJp58fmqvgowbILdzqiTrbtrJU8mKd1JkVubuNY9as3Fdk1do8APXJ0Y3_1IoquBfnalZj2Cc3Y-JmrllooDrKvp-A6Kl5gSzqw0OZzR44_TUfw50ATOxwr3Wlvo8pfZzNDVxpzSRKfC9ccjTdf6UV5cNnG_isSj5mOtiA1569oRAAFukTAZ5Cg_uI3f7C25zV89Zdg-DFJUAlO5p-YDRzMgJ8mZvREeDyTjyhEQ5LBFff-Av-EHrL4Ns6kHgrt4vHAKyel1-XQfhnUdH1a7KC9xyibhFPCN322g2yR8OMzVDQ9xTLKdulHJe1gZYryRDQ3wA"
+    }
+  },
+  "statusText": "OK"
+}

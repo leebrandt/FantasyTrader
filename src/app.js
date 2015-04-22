@@ -48,7 +48,7 @@
 
 	angular.module('fantasyTrader', 
     ['ui.bootstrap', 'ui.router', 'snap', 'hyper-resource',
-    'core', 'registration', 'authentication', 'exchange', 'news'])
+    'core', 'registration', 'authentication', 'account', 'exchange', 'news'])
 		.config(['snapRemoteProvider', '$httpProvider', 'HyperResourceProvider', config])
 		.run(['$rootScope', 'snapRemote', run]);
 	

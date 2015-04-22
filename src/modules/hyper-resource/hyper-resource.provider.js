@@ -90,10 +90,11 @@
 				return getLink(this.Steps.slice(0), {href:ApiRoot + (currentUser ? '/private/' : '/public/') + '?app=' + AppName});
 			};
 			Resource.prototype.Run = function(action, data, cfg){
+				var headers = cfg && cfg.headers ? cfg.headers : {};
 				return $http({
 					url:action.href,
 					method:action.method,
-					config:cfg,
+					headers:headers,
 					data:data
 				});					
 			

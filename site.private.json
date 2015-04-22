@@ -1,0 +1,53 @@
+{
+  "data": {
+    "class": "Site",
+    "properties": {
+      "AppName": "FantasyTrader"
+    },
+    "actions": [
+      {
+        "name": "login",
+        "class": "Authentication",
+        "method": "POST",
+        "href": "http://msp0lnans001.etdbw.com/security/authentication/token?grant_type=client_credentials"
+      },
+      {
+        "name": "register",
+        "class": "Registration",
+        "method": "POST",
+        "href": "http://msp0lnans001.etdbw.com/security/registration/user"
+      },
+      {
+        "name": "forgotpwd",
+        "class": "Account",
+        "method": "PUT",
+        "href": "http://msp0lnans001.etdbw.com/security/account/password/{UserId}"
+      }
+    ],
+    "links": [
+      {
+        "rel": "Headlines",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/headline"
+      },
+      {
+        "rel": "Indexes",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/index"
+      }
+    ]
+  },
+  "status": 200,
+  "config": {
+    "method": "GET",
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "url": "http://msp0lnans001.etdbw.com/site/map/public/?app=FantasyTrader",
+    "headers": {
+      "Accept": "application/vnd.siren+json"
+    }
+  },
+  "statusText": "OK"
+}
