@@ -8,7 +8,6 @@
 			HypermediaType = 'Siren';
 			
 	var hyperResourceProvider = function(){
-
 		this.SetApiRoot = function(apiRoot){
 			ApiRoot = apiRoot;
 		};
@@ -22,7 +21,6 @@
 		};
 
 		this.$get = ['$window', '$http', '$q', hyperResource];
-
 	};
 
 	// the final resource from the provider
@@ -35,6 +33,7 @@
 			};
 
 			Resource.prototype.Steps = buildHypermediaSteps(path);
+
 			Resource.prototype.Get = function(params){
 				replaceStepParams(this.Steps, params);
 				
@@ -91,18 +90,44 @@
 				// kick this thing off
 				return getLink(this.Steps.slice(0), {href:ApiRoot + (currentUser ? '/private/' : '/public/') + '?app=' + AppName});
 			};
+
+			// NEEDS TESTING
 			Resource.prototype.Run = function(action, data, cfg){
 				var headers = cfg && cfg.headers ? cfg.headers : {};
 				return $http({
 					url:action.href,
-					method:action.method,
+					method:action.method || 'GET',
 					headers:headers,
 					data:data
-				});					
-			
+				});
 			};
 
-		
+			// NEEDS TESTING
+			Resource.prototype.Action = function(name, data, cfg, params){
+				var self = this;
+				return self.Get().then(
+					function(result){
+						var action = result.actions.find(function(item){
+							return item.name === name;
+						});
+						action.href = replaceUrlParams(action.href, params);						
+						return self.Run(action, data, cfg);
+					});
+			};
+
+			// NEEDS TESTING
+			Resource.prototype.Link = function(relName, cfg, params){
+				var self = this;
+				return self.Get().then(
+					function(result){
+						var link = result.links.find(function(item){
+							return item.rel === relName;
+						});
+						link.href = replaceUrlParams(link.href, params);
+						return self.Run(link, null, cfg);
+					});
+			};
+
 			// return a new instance of this thing
 			return new Resource(path);
 		}
@@ -166,6 +191,15 @@ function pullLinkFromResult(step, result){
 		});
 	}
 	return link;
+}
+
+function replaceUrlParams(url, params){
+	for(var param in params){
+		if(params.hasOwnProperty(param)){
+			url = url.replace('{'+param+'}', params[param]);
+		}
+	}
+	return url;
 }
 
 if (!Array.prototype.find) {

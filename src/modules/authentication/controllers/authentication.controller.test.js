@@ -1,4 +1,4 @@
-describe('Authentication module', function(){
+fdescribe('Authentication module', function(){
 	describe('Authentication Controller', function(){
 		'use strict';
 

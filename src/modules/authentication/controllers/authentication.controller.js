@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 
-	var authenticationCtrl = function($state, AuthenticationSvc, SessionSvc, Logger){
+	var authenticationCtrl = function($rootScope, $state, AuthenticationSvc, SessionSvc, Logger){
 		var ctrl = this;
 		ctrl.step = 1;
 		ctrl.credentials = {};
@@ -21,7 +21,8 @@
 
 		ctrl.login = function(){
 			if(ctrl.credentials.password){
-				AuthenticationSvc.Login(ctrl.credentials).then(
+				AuthenticationSvc.Login(ctrl.credentials)
+				.then(
 					//success
 					function(result){
 						var user = result.data;
@@ -42,34 +43,27 @@
 				Logger.LogError('You must enter your email address.');
 				return;
 			}
-			// Site.Get().then(function(site){
-			// 	var action = _.find(site.actions, {'name':'forgotpwd'});
-			// 	action.href = action.href.replace('{UserId}', ctrl.userId);
-			// 	action.method = 'GET';
-			// 	Site.Run(action).then(
-			// 		function(result){
-			// 			ctrl.securityQuestion = result.data;
-			// 			ctrl.step++;
-			// 		},
-			// 		function(err){
-			// 			Logger.LogError('Unable to find that email in the system.');
-			// 		});
-			// });
+			AuthenticationSvc.LoadSecurityQuestion(ctrl.userId)
+			.then(
+				function(result){
+					ctrl.securityQuestion = result.data;
+					ctrl.step++;
+				},
+				function(err){
+					Logger.LogError(err.data);
+				});
 		};
 
 		ctrl.recoverPassword = function(){
-			// Site.Get().then(function(site){
-			// 	var action = _.find(site.actions, {'name':'forgotpwd'});
-			// 	action.href = action.href.replace('{UserId}', ctrl.userId);
-			// 	Site.Run(action, {Answer:ctrl.answer,Question:ctrl.securityQuestion}).then(
-			// 		function(result){
-			// 			Logger.LogSuccess('Your temporary password has been sent to the email provided.');
-			// 			$state.go('login');
-			// 		},
-			// 		function(err){
-			// 			Logger.LogError(err);
-			// 		});
-			// });
+			AuthenticationSvc.RecoverPassword(ctrl.userId, ctrl.securityQuestion, ctrl.answer)
+			.then(
+				function(result){
+					Logger.LogSuccess('Your temporary password has been sent to the email provided.');
+					$state.go('login');
+				},
+				function(err){
+					Logger.LogError(err);
+				});
 		};
 		
 
@@ -79,5 +73,5 @@
 	};
 
 	angular.module('authentication')
-		.controller('AuthenticationCtrl', ['$state', 'AuthenticationSvc', 'SessionSvc', 'Logger', authenticationCtrl]);
+		.controller('AuthenticationCtrl', ['$rootScope', '$state', 'AuthenticationSvc', 'SessionSvc', 'Logger', authenticationCtrl]);
 }());

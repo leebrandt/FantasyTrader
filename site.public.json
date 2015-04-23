@@ -30,6 +30,10 @@
         "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/headline"
       },
       {
+        "rel": "challenge",
+        "href": "http://msp0lnans001.etdbw.com/security/account/password/{UserId}"
+      },
+      {
         "rel": "Indexes",
         "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/index"
       }

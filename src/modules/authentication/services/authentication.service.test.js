@@ -1,4 +1,4 @@
-describe('Authentication module', function(){
+fdescribe('Authentication module', function(){
 	describe('Authentication Service', function() {
 		'use strict';
 
@@ -41,18 +41,6 @@ describe('Authentication module', function(){
 
 				it('should call the Site action Run to get the login payload', function(){
 					expect(Site.Run).toHaveBeenCalledWith(loginAction, null, jasmine.any(Object));
-				});
-			});
-
-			describe('failed login', function(){
-
-				beforeEach(inject(function($rootScope) {
-					sitePromise.reject('Error message');
-					$rootScope.$apply();
-				}));
-
-				it('should log the faulure reason', function(){
-					expect(Logger.LogError).toHaveBeenCalledWith('Error message');
 				});
 			});
 		});
