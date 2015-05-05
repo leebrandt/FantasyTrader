@@ -4,6 +4,8 @@
 	var exchangeCtrl = function($rootScope, $state, ExchangeSvc){
 		var ctrl = this;
 
+		ctrl.init = function(){};
+
 		ctrl.loadExchangeList = function(){
 			ExchangeSvc.List().then(function(result){
 				ctrl.exchangeList = result.map(function(exchange){
@@ -33,7 +35,6 @@
 				console.log(err);
 			});
 		};
-
 		return ctrl;
 	};
 

@@ -1,4 +1,4 @@
-fdescribe('Authentication module', function(){
+describe('Authentication module', function(){
 
 	beforeEach(function(){
 		module('authentication');	

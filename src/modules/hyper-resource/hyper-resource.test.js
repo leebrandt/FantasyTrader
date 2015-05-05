@@ -64,3 +64,19 @@ describe('Hyper Resource Provider', function(){
 		});
 	});
 });
+
+fdescribe('Replacing URL parameters', function(){
+
+	it('should replace parameters passed', function(){
+		var paramUrl = 'http://{sub}.{domain}.{tld}/?{query}';
+		var replacedUrl = replaceUrlParams(paramUrl, {sub:'set', domain:'mycompany', tld:'com', query:'hello'});
+		expect(replacedUrl).toEqual('http://set.mycompany.com/?hello');
+	});
+
+	it('should drop any parameters not passed from the url', function(){
+		var paramUrl = 'http://www.{domain}.com/?query={query}';
+		var replacedUrl = replaceUrlParams(paramUrl, {domain:'mycompany'});
+		expect(replacedUrl).toEqual('http://www.mycompany.com/?query=');
+	});
+
+});

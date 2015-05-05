@@ -199,6 +199,7 @@ function replaceUrlParams(url, params){
 			url = url.replace('{'+param+'}', params[param]);
 		}
 	}
+	url = url.replace(/{[^]*}/, '');
 	return url;
 }
 

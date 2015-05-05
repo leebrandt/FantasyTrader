@@ -1,4 +1,4 @@
-fdescribe('Authentication module', function(){
+describe('Authentication module', function(){
 	describe('Authentication Service', function() {
 		'use strict';
 
@@ -15,7 +15,6 @@ fdescribe('Authentication module', function(){
 			spyOn(Site, 'Run').and.returnValue(actionPromise.promise);
 			spyOn(Logger, 'LogError').and.callThrough();
 			testCredentials = {username:'me@mail.com', password:'myP@ssw0rd'};
-			
 		}));
 
 		beforeEach(inject(function(_AuthenticationSvc_) {

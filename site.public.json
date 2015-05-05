@@ -26,6 +26,10 @@
     ],
     "links": [
       {
+        "rel": "Indexes",
+        "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/index"
+      },
+      {
         "rel": "Headlines",
         "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/headline"
       },
@@ -34,8 +38,8 @@
         "href": "http://msp0lnans001.etdbw.com/security/account/password/{UserId}"
       },
       {
-        "rel": "Indexes",
-        "href": "http://msp0lnans001.etdbw.com/fantasytrader/market/index"
+        "rel": "Registration",
+        "href": "http://msp0lnans001.etdbw.com/security/registration/user/{RegistrantId}"
       }
     ]
   },

@@ -59,11 +59,11 @@
 						},
 						//error
 						function(err){
-							Logger.LogError(err);
+							Logger.LogError(err.data || err.statusText);
 						}
 					);
 				}else{
-					Logger.LogError('You fucked up.');
+					Logger.LogError('An unknown error occurred.');
 				}
 		};
 
@@ -86,7 +86,7 @@
       if(!ctrl.user.Challenge){
         ctrl.user.Challenge = [];
       }
-      ctrl.user.Challenge.push({question:ctrl.currentQuestion, answer: ctrl.currentAnswer});
+      ctrl.user.Challenge.push({Question:ctrl.currentQuestion, Answer: ctrl.currentAnswer});
       ctrl.securityQuestions.splice(ctrl.securityQuestions.indexOf(ctrl.currentQuestion), 1);
       ctrl.currentQuestion = {};
       ctrl.currentAnswer = '';

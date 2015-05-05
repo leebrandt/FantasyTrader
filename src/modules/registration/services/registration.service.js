@@ -1,18 +1,29 @@
 (function(){
 	'use strict';
 
-	var registrationService = function($http, RegistrationApi){
+	var registrationService = function($http, $stateParams, Site, Registration){
+		//HACK: Need to remove this and get it out of HyperMedia
+		var baseUrl = 'http://msp0lnans001.etdbw.com/security/registration/';
 		var initiate = function(user){
-				return $http.post(RegistrationApi + 'user', user);
+				return Site.Action('register', user);
 			},
 			getById = function(key){
-				return $http.get(RegistrationApi + 'user/' + key);
+				return Site.Link('Registration', null, {RegistrantId:$stateParams.key}).then(
+					//success
+					function(result){
+						return result;
+					},
+					// error
+					function(err){
+						console.log(err);
+					}
+					);
 			},
 			complete = function(user){
-				return $http.post(RegistrationApi + 'user/' + user.key, user);
+				return $http.post(baseUrl + 'user/' + user.key, user);
 			},
 			getSecurityQuestions = function(){
-        return $http.get(RegistrationApi + '/challenge');
+        return $http.get(baseUrl + 'challenge/');
       };
 
 		return {
@@ -24,5 +35,5 @@
 	};
 
 	angular.module('registration')
-		.service('RegistrationSvc', ['$http', 'RegistrationApi', registrationService]);
+		.service('RegistrationSvc', ['$http', '$stateParams', 'Site', 'Registration', registrationService]);
 }());

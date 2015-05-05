@@ -3,7 +3,7 @@ describe('Registration module', function(){
 	
 	describe('Registration Service', function(){
 
-		var regServiceUrl = 'http://localhost/fakeRegistrationSvc/', 
+		var regServiceUrl = 'http://my.fakeapi.com/public/', 
 				key = 'MYKEYVALUEISHERE',
 				errorMessage = 'An error occurred. Here\'s why:';
 
