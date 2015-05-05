@@ -26,7 +26,7 @@
 		};
 	};
 
-	angular.module('core', ['ui.router', 'ui.bootstrap', 'authentication', 'hyper-resource'])
+	angular.module('core', ['ui.router', 'ui.bootstrap', 'authentication', 'stock', 'hyper-resource'])
 	.constant('toastr', window.toastr)
 		.config(['$stateProvider', '$urlRouterProvider', config])
 		.run(['$rootScope', run]);

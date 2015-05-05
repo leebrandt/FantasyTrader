@@ -1,19 +1,30 @@
 (function(){
   'use strict';
 
-	var coreCtrl = function($scope, $state, Logger, AuthenticationSvc, SessionSvc, Site){
+	var coreCtrl = function($scope, $state, Logger, AuthenticationSvc, SessionSvc, Site, StockSvc){
 		var ctrl = this;
 
     ctrl.init = function(){
       Site.Get().then(function(result){
         ctrl.site = result;
       });
-      ctrl.markets = [
-        {name:'DJIA', value:17265.83, change:-52.02, changePct:-0.87},
-        {name:'NASDAQ', value:4662.83, change:-20.81, changePct:-0.44},
-        {name:'GOLD', value:17265.83, change:26.45, changePct:2.11},
-        {name:'SILVER', value:17265.83, change:0.48, changePct:2.88}, 
-        {name:'BITCOIN', value:17265.83, change:-5.75, changePct:-2.48}];
+
+      StockSvc.GetPrice(['AAPL', 'MSFT', 'GOLD','CORN','GLNG']).then(
+        //success
+        function(result){
+          ctrl.markets = result.data.map(function(stock){
+            return {
+              name: stock.Symbol,
+              value: stock.Price,
+              change: stock.Change,
+              changePct: ((parseFloat(stock.Change)) / parseFloat(stock.Open)) * 100 
+            };
+          });
+        },
+        // error
+        function(err){
+          Logger.LogError(err.data || err.statusText);
+        });
     };
 
     ctrl.logout = function(){
@@ -62,6 +73,6 @@
 	};
 
 	angular.module('core')
-		.controller('CoreCtrl', ['$scope', '$state', 'Logger', 'AuthenticationSvc', 'SessionSvc', 'Site', coreCtrl]);
+		.controller('CoreCtrl', ['$scope', '$state', 'Logger', 'AuthenticationSvc', 'SessionSvc', 'Site', 'StockSvc', coreCtrl]);
 
 }());

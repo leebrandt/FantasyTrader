@@ -1,0 +1,33 @@
+<section data-ng-controller="UserCtrl as vm" data-ng-init="vm.loadUsers()">
+	<section class="user-list">
+		<article class="header">
+			<span class="btn-edit"></span>
+			<span class="username">Username</span>
+			<span class="display-name">Display Name</span>
+			<span class="btn-unlock" data-ng-show="user.locked"></span>
+			<span class="btn-lock" data-ng-show="!user.locked"></span>
+			<span class="btn-activate" data-ng-show="!user.isActive"></span>
+			<span class="btn-deactivate" data-ng-show="user.isActive"></span>
+		</article>
+		<article class="user" data-ng-repeat="user in vm.users">
+			<button class="btn btn-xs btn-primary btn-edit">
+				<i class="fa fa-pencil"></i>
+			</button>
+			<span class="username" data-ng-bind="user.email"></span>
+			<span class="display-name" data-ng-bind="user.firstName + ' ' + user.lastName"></span>
+			<button class="btn btn-xs btn-success btn-unlock" data-ng-show="user.locked">
+				<i class="fa fa-unlock"></i>
+			</button>
+			<button class="btn btn-xs btn-danger btn-lock" data-ng-show="!user.locked">
+				<i class="fa fa-lock"></i>
+			</button>
+			<button class="btn btn-xs btn-success btn-activate" data-ng-show="!user.isActive">
+				<i class="fa fa-power-off"></i>
+			</button>
+			<button class="btn btn-xs btn-danger btn-deactivate" data-ng-show="user.isActive">
+				<i class="fa fa-power-off"></i>
+			</button>
+
+		</article>
+	</section>
+</section>

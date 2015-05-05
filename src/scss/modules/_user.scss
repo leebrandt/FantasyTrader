@@ -1,0 +1,39 @@
+.user-list{
+	.header{
+		background: #CCC;
+		color: #777;
+		span{
+			display: inline-block;
+			padding:.5rem;
+		}
+	}
+	.user{
+		padding: .5rem;
+		
+	}
+	span{
+		display: inline-block;
+		padding: .5rem;
+		margin:0;
+		.btn, .btn-xs{
+			font-size: 35rem;
+		}
+		&.btn-edit{
+			width: 6%;
+		}
+		&.username {
+			width: 20%;
+		}
+		&.display-name{
+			width: 20%;
+		}
+		&.btn-lock,
+		&.btn-unlock{
+			width: 5%;
+		}
+		&.btn-activate,
+		&.btn-deactivate{
+			width: 9%;
+		}
+	}
+}

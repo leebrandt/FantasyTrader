@@ -18,7 +18,5 @@ describe('Core Module', function(){
 			expect(typeof controller.init).toBe('function');
 		});
 
-		
-
 	});
 });

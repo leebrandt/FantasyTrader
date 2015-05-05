@@ -6,6 +6,12 @@
     },
     "actions": [
       {
+        "name": "forgotpwd",
+        "class": "Account",
+        "method": "PUT",
+        "href": "http://msp0lnans001.etdbw.com/security/account/password/{UserId}"
+      },
+      {
         "name": "login",
         "class": "Authentication",
         "method": "POST",
@@ -16,12 +22,6 @@
         "class": "Registration",
         "method": "POST",
         "href": "http://msp0lnans001.etdbw.com/security/registration/user"
-      },
-      {
-        "name": "forgotpwd",
-        "class": "Account",
-        "method": "PUT",
-        "href": "http://msp0lnans001.etdbw.com/security/account/password/{UserId}"
       }
     ],
     "links": [

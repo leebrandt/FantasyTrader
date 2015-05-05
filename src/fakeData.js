@@ -106,11 +106,13 @@ var fakeData = {
 	},{
 		email:'chowdown@wideload.com',
 		pwd: 'L@rdA$$',
+		isActive: true,
 		firstName: 'David',
 		lastName: 'Hogan'
 	},{
 		email:'rbrauer@thebody.com',
 		pwd: 'Tr@!N',
+		locked: true,
 		firstName: 'Ray',
 		lastName: 'Brauer'
 	}]

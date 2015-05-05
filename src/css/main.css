@@ -11818,3 +11818,28 @@ snap-content {
   .news .item .byline {
     font-size: 1.25rem;
     font-weight: bold; }
+
+.user-list .header {
+  background: #CCC;
+  color: #777; }
+  .user-list .header span {
+    display: inline-block;
+    padding: .5rem; }
+.user-list .user {
+  padding: .5rem; }
+.user-list span {
+  display: inline-block;
+  padding: .5rem;
+  margin: 0; }
+  .user-list span .btn, .user-list span .btn-xs, .user-list span .btn-group-xs > .btn {
+    font-size: 35rem; }
+  .user-list span.btn-edit {
+    width: 6%; }
+  .user-list span.username {
+    width: 20%; }
+  .user-list span.display-name {
+    width: 20%; }
+  .user-list span.btn-lock, .user-list span.btn-unlock {
+    width: 5%; }
+  .user-list span.btn-activate, .user-list span.btn-deactivate {
+    width: 9%; }
