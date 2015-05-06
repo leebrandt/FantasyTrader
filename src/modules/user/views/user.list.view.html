@@ -11,16 +11,16 @@
 		</article>
 		<article class="user" data-ng-repeat="user in vm.users">
 			<span class="user-actions">
-				<button class="btn btn-xs btn-success btn-unlock" data-ng-show="user.locked">
+				<button class="btn btn-xs btn-success btn-unlock" data-ng-show="user.locked" data-ng-click="vm.unlockUser(user)">
 					<i class="fa fa-unlock"></i>
 				</button>
-				<button class="btn btn-xs btn-danger btn-lock" data-ng-show="!user.locked">
+				<button class="btn btn-xs btn-danger btn-lock" data-ng-show="!user.locked" data-ng-click="vm.lockUser(user)">
 					<i class="fa fa-lock"></i>
 				</button>
-				<button class="btn btn-xs btn-success btn-activate" data-ng-show="!user.isActive">
+				<button class="btn btn-xs btn-success btn-activate" data-ng-show="!user.isActive" data-ng-click="vm.activateUser(user)">
 					<i class="fa fa-power-off"></i>
 				</button>
-				<button class="btn btn-xs btn-danger btn-deactivate" data-ng-show="user.isActive">
+				<button class="btn btn-xs btn-danger btn-deactivate" data-ng-show="user.isActive" data-ng-click="vm.deactivateUser(user)">
 					<i class="fa fa-power-off"></i>
 				</button>
 				<a class="btn btn-xs btn-primary btn-edit" data-ui-sref="user-edit({id:user.id})">
