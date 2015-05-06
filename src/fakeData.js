@@ -94,22 +94,26 @@ var fakeData = {
 				}],
 
 	users: [{
+		id: 1,
 		email:'rmullinnix@yahoo.com',
 		pwd: 'testpwd',
 		firstName: 'Rob',
 		lastName: 'Mullinnix'
 	},{
+		id: 2,
 		email:'leebrandt@gmail.com',
 		pwd: 'p@ssw0rd',
 		firstName: 'Lee',
 		lastName: 'Brandt'
 	},{
+		id: 3,
 		email:'chowdown@wideload.com',
 		pwd: 'L@rdA$$',
 		isActive: true,
 		firstName: 'David',
 		lastName: 'Hogan'
 	},{
+		id: 4,
 		email:'rbrauer@thebody.com',
 		pwd: 'Tr@!N',
 		locked: true,

@@ -9,6 +9,10 @@
 			.state('user-list',{
 				url: '/admin/user/list',
 				templateUrl: 'modules/user/views/user.list.view.html'
+			})
+			.state('user-edit',{
+				url: '/admin/user/edit/:id',
+				templateUrl: 'modules/user/views/user.edit.view.html'
 			});
 
 	};

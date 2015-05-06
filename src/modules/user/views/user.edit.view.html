@@ -1,0 +1,15 @@
+<section data-ng-controller="UserCtrl as vm" data-ng-init="vm.loadUser()">
+	<input type="email" data-ng-model="vm.user.email"/>
+	<input type="text" data-ng-model="vm.user.firstName"/>
+	<input type="text" data-ng-model="vm.user.lastName"/>
+	<span class="form-actions">
+		<a class="btn btn-default" data-ui-sref="user-list">
+			<i class="fa fa-times"></i>
+			cancel
+		</a>
+		<button class="btn btn-success" data-ng-click="vm.saveUser()">
+		<i class="fa fa-check"></i>
+			update
+		</button>
+	</span>
+</section>

@@ -1,39 +1,54 @@
 .user-list{
 	.header{
-		background: #CCC;
-		color: #777;
-		span{
-			display: inline-block;
-			padding:.5rem;
+		display: none;
+		@include mq(768px){
+			display: block;
+			background-color: #EEE;
+			padding: 1rem .5rem;
+			span{
+				&.username,
+				&.display-name{
+					display: inline-block;
+					width: 20%;
+					font-weight: bold;
+				}
+			}
 		}
 	}
 	.user{
-		padding: .5rem;
-		
-	}
-	span{
-		display: inline-block;
-		padding: .5rem;
-		margin:0;
-		.btn, .btn-xs{
-			font-size: 35rem;
+		border: solid 1px #EEE;
+		padding: 1rem .5rem;
+		@include clearfix();
+		span{
+			display: block;
+			width: 64%;
+			float: left;
+			@include mq(768px){
+				display: inline-block;
+				width: auto;
+				&.username,
+				&.display-name{
+					width: 20%;
+				}
+
+			}
 		}
-		&.btn-edit{
-			width: 6%;
-		}
-		&.username {
-			width: 20%;
-		}
-		&.display-name{
-			width: 20%;
-		}
-		&.btn-lock,
-		&.btn-unlock{
-			width: 5%;
-		}
-		&.btn-activate,
-		&.btn-deactivate{
-			width: 9%;
+		.user-actions{
+			width: 13rem;
+			float: right;
+			vertical-align: middle;
+			@include mq(768px){
+				width: 10rem;				
+			}
+			.btn{
+				display: inline-block;
+				font-size: 2.25rem;
+				width: 4rem;
+				@include mq(768px){
+					width: 2.75rem;
+					font-size: 1.5rem;
+				}
+			}
 		}
 	}
 }
