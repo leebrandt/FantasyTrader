@@ -6,7 +6,7 @@ This application is meant to be a guide when creating [AngularJS](http://angular
 ## Getting Started
 Clone the repository
 
-```
+```bash
 git clone https://github.com/leebrandt/FantasyTrader.git
 ```
 
