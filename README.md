@@ -15,3 +15,11 @@ Get the NPM and Bower packages
 ```bash
 npm install && bower install
 ```
+
+Run the app
+
+```bash
+gulp dev
+```
+
+This will start up the app and launch BrowserSync (which launches a browser).
