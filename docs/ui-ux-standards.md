@@ -33,5 +33,7 @@
 ## Modular SASS [(SMACSS)](https://smacss.com)
 
 ## Basic UX Concepts
-* Familiarity
-  - People are used to using the web these days. They have a preconceived idea of what a button should look like, what tabs do and how site navigation works. The idea of familiarity (or 'No New Concepts'), is that when a user sees a button, it acts the way they _expect_ a button to act.
+<dl>
+	<dt>Familiarity</dt>
+	<dd>People are used to using the web these days. They have a preconceived idea of what a button should look like, what tabs do and how site navigation works. The idea of familiarity (or 'No New Concepts'), is that when a user sees a button, it acts the way they _expect_ a button to act.</dd>
+</dl>
