@@ -5,11 +5,13 @@ This application is meant to be a guide when creating [AngularJS](http://angular
 
 ## Getting Started
 Clone the repository
+
 ```
 git clone https://github.com/leebrandt/FantasyTrader.git
 ```
 
 Get the NPM and Bower packages
-```bash
+
+```
 npm install && bower install
 ````
