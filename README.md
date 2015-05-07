@@ -12,6 +12,6 @@ git clone https://github.com/leebrandt/FantasyTrader.git
 
 Get the NPM and Bower packages
 
-```
+```bash
 npm install && bower install
-````
+```
