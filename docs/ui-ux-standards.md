@@ -35,7 +35,5 @@
 ## Basic UX Concepts
 <dl>
 	<dt>Familiarity</dt>
-	<dd>People are used to using the web these days. They have a preconceived idea of what a button should look like, what tabs do and how site navigation works. The idea of familiarity (or 'No New Concepts'), is that when a user sees a button, it acts the way they 
-	*expect* 
-	a button to act.</dd>
+	<dd>People are used to using the web these days. They have a preconceived idea of what a button should look like, what tabs do and how site navigation works. The idea of familiarity (or 'No New Concepts'), is that when a user sees a button, it acts the way they <em>expect</em> a button to act.</dd>
 </dl>
