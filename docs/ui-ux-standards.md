@@ -41,7 +41,7 @@
 ## Common Code Styles
 * Revealling Module Pattern for Services/Factories
 
-```js
+```javascript
 	function someService = function($state, $http){
 		var getList = function(){
 					return $http.get('http://api.com/person');
